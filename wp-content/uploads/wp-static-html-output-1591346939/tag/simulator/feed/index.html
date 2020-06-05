@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Simulator &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/simulator/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 07 Aug 2014 15:22:32 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Genesys GPlus &#8211; Aspect eWFM Simulator</title>
+		<link>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/</link>
+					<comments>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 07 Aug 2014 15:22:32 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Aspect]]></category>
+		<category><![CDATA[eWFM]]></category>
+		<category><![CDATA[GPlus]]></category>
+		<category><![CDATA[Simulator]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2531</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In my current project, I am working on integrating Genesys G+ Adapter with Aspect eWFM (Workforce Management solution). We completed internal testing and wrote blog about configuring alarms for GPlus Adapter here (<a title="How to configure alarm conditions for GPlus Adapter?" href="http://lakshmikanth.azurewebsites.net/how-to-configure-alarm-conditions-for-gplus-adapter/" target="_blank" rel="noopener noreferrer">how-to-configure-alarm-conditions-for-gplus-adapter?</a>)</p>
+<p>To verify configuration and successful integration, I realized that I need to have RTA Server simulator for the following reasons</p>
+<ul>
+<li><strong>Dependency on Aspect engineer</strong> &#8211; Aspect eWFM is hosted and managed by third party vendor. Even for minor changes like agent id to login id, aspect engineer&#8217;s availability became an issue as it extended project timelines and naturally, increased cost</li>
+<li><strong>Network &amp; Firewall Issues</strong> &#8211; Our environment is complex where real time data need to traverse through multiple networks &amp; firewalls and each segment, source &amp; destination IP address are <a title="NAT" href="http://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreferrer">NAT</a>&#8216;ed for security purpose. We need to identify whether packets are sent from GPlus Adapter and if yes, what is sent. Unfortunately, GPlus Adapter logs doesn&#8217;t have this information</li>
+<li><strong>Fail over and Load testing</strong> &#8211; We had single eWFM environment for both production and testing and can&#8217;t be used for fail over &amp; load testing</li>
+</ul>
+<p>With little bit of help from Aspect documents and my own analysis to understand Aspect RTA server, I completed development of RTA Simulator.</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png"><img class="aligncenter wp-image-2541 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png" alt="Aspect RTA Debugger" width="958" height="705" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png 958w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger-300x221.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger-768x565.png 768w" sizes="(max-width: 958px) 100vw, 958px" /></a></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/1-filled-32.png"><img class="alignleft wp-image-2581" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/1-filled-32.png" alt="1-filled-32" width="24" height="24" /></a></p>
+<p>&nbsp;</p>
+<p>Message Packet timestamp &#8211; To identify network disconnects in the environment</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/2-filled-32.png"><img class="alignleft wp-image-2591" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/2-filled-32.png" alt="2-filled-32" width="24" height="24" /></a></p>
+<p>Actual message packet &#8211; I parsed message packet to check timestamp , agent state record etc. Clicking &#8216;StateRecordMessage&#8217; shows agent state details as below<a style="font-style: normal;" href="/wp-content/uploads/2014/08/Agent-State-Record-Alone.png"><img class="aligncenter  wp-image-2551" src="/wp-content/uploads/2014/08/Agent-State-Record-Alone.png" alt="Agent State Record Alone" width="424" height="310" /></a></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/3-filled-32.png"><img class="alignleft wp-image-2601" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/3-filled-32.png" alt="3-filled-32" width="24" height="24" /></a>Log message &#8211; For reference, I logged messages into file but needed quick way to check message packet</p>
+<p>&nbsp;</p>
+<p>With simulator</p>
+<ul>
+<li>I can modify GPlus Adapter configuration and confirm results immediately saving lot of time &amp; money</li>
+<li>Allowed me to complete fail over and load testing successfully</li>
+<li>GPlus Adapter allows to configure multiple RTA streams. I configured two streams, one for simulator running locally and another one for Aspect RTA Server. It helped us to identify not only network and firewall issues &amp; also security configurations for GPlus Adapter</li>
+</ul>
+<p><strong>Note:</strong> Application size is nearly 60 MB and hence, not attached with this post. If you need this tool, feel free to contact me.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/feed/</wfw:commentRss>
+			<slash:comments>41</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

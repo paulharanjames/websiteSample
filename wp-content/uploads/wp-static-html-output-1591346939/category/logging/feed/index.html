@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Logging &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/logging/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Fri, 18 Sep 2009 11:05:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Delete Old log files using VB6</title>
+		<link>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2009 11:05:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Logging]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=641</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>VB6 Snippet to delete old log files</p>
+<p>Private Sub deleteOldFiles() </p>
+<p>Dim sFileName As String   <br />Dim sFileSplit() As String    <br />Dim sFileSpec As String    <br />Dim sDir As String    <br />Dim iCount As Integer    <br />Dim iCtr As Integer    <br />Dim dCompDate As Date    <br />Dim dFileDate As Date </p>
+<p>On Error GoTo errHandler </p>
+<p>sFileSpec = App.Path &#038; &#8220;\logs\*.log&#8221;   <br />sFileName = Dir(sFileSpec) </p>
+<p>dCompDate = Format(Now, &#8220;mm/dd/yyyy&#8221;) </p>
+<p>Do   <br />    If sFileName = &#8220;&#8221; Then Exit Do    <br />        If InStr(sFileSpec, &#8220;\&#8221;) > 0 Then    <br />            sFileSplit = Split(sFileSpec, &#8220;\&#8221;)    <br />            iCount = UBound(sFileSplit) &#8211; 1    <br />                For iCtr = 0 To iCount    <br />                    sDir = sDir &#038; sFileSplit(iCtr) &#038; &#8220;\&#8221;    <br />                Next    <br />            sFileName = sDir &#038; sFileName    <br />        End If    <br />        dFileDate = Format(FileDateTime(sFileName), &#8220;mm/dd/yyyy&#8221;)    <br />        If DateDiff(&#8220;d&#8221;, dFileDate, dCompDate) >= 3 Then    <br />         &#8216;Get File Attributes    <br />          If GetAttr(sFileName) = 33 Then    <br />             SetAttr sFileName, 32    <br />          End If    <br />         Kill sFileName    <br />        End If    <br />    sFileName = Dir    <br />    sDir = &#8220;&#8221;    <br />Loop </p>
+<p>Exit Sub </p>
+<p>errHandler: </p>
+<p> MsgBox Err.Number &#038; &#8220;:&#8221; &#038; Err.Description </p>
+<p>End Sub</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Write log using VB6</title>
+		<link>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2009 11:03:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Logging]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=651</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Function to write log file using Visual Basic 6</p>
+<p>Private Sub writeLog(strMessage As String) </p>
+<p>Dim hFile As Long   <br />Dim sFolder As String    <br />Dim sFile As String    <br />Dim sDestination As String    <br />Dim sLog As String </p>
+<p>On Error GoTo errHandler </p>
+<p>hFile = FreeFile()   <br />sFolder = App.Path &#038; &#8220;\logs&#8221;    <br />sFile = sFolder &#038; &#8220;\Softphone.log&#8221; </p>
+<p>sLog = Format(Now(), &#8220;yyyy-mm-dd HH:nn:ss&#8221;) &#038; &#8220;.&#8221; &#038; Right(Format(Timer(), &#8220;0.000&#8221;), 3)   <br />sLog = sLog &#038; vbTab &#038; strMessage </p>
+<p>If lLineNumber > 60000 Then &#8216;Approx 5 MB   <br />    lLineNumber = 1    <br />    sDestination = sFolder &#038; &#8220;\Softphone_&#8221; &#038; Format(Now(), &#8220;yyyymmdd_HHnnss&#8221;) &#038; &#8220;.log&#8221;    <br />    FileCopy sFile, sDestination    <br />    Kill sFile    <br />Else    <br />    lLineNumber = lLineNumber + 1    <br />End If </p>
+<p>Open sFile For Append As #hFile   <br />    Print #hFile, sLog    <br />Close hFile </p>
+<p>Exit Sub </p>
+<p>errHandler: </p>
+<p>If Err.Number = 76 Then &#8216;If folder not exists, create it   <br />    MkDir sFolder    <br />    Resume    <br />End If    <br />MsgBox Err.Number &#038; &#8220;:&#8221; &#038; Err.Description </p>
+<p>End Sub</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Network Logging in Genesys</title>
+		<link>http://localhost/lakshmikanth/2008/10/29/network-logging-in-genesys/</link>
+					<comments>http://localhost/lakshmikanth/2008/10/29/network-logging-in-genesys/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 29 Oct 2008 19:56:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Logging]]></category>
+		<category><![CDATA[Message Server]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=981</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				<span><strong>How to configure network logging in Genesys ?</strong></span></p>
+<p>Network logging in Genesys is a multi-step process. First, the application sends the log record to Message Server. Message server sends record to update in DB.</p>
+<p>1. Create Log Database </p>
+<p>2  Initialize the database using the scripts in Message Server installation folder</p>
+<p>3. In Message Server, add connection to LogDAP</p>
+<p>4. In Message Server, set property &#8216;messages\db_storage&#8217; as &#8220;true&#8221;</p>
+<p>5. From any application object (like T-Server), add connection to the Message Server</p>
+<p>Please note that log level should be set to network for any centralized logging. </p>
+<p>It is simple, isn&#8217;t it?		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2008/10/29/network-logging-in-genesys/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

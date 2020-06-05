@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Log Events &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/log-events/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 24 Sep 2014 21:24:10 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Genesys &#8211; How to customize log events?</title>
+		<link>http://localhost/lakshmikanth/2014/09/24/genesys-customize-log-steps/</link>
+					<comments>http://localhost/lakshmikanth/2014/09/24/genesys-customize-log-steps/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 24 Sep 2014 21:24:10 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Log Events]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=4111</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In this post, we will see how to customise log events in Genesys environment. For more information about log events customization, refer my last post <a title="Genesys – Customize log events" href="http://www.lakshmikanth.com/genesys-customize-log-events/">here</a></p>
+<p>For this, we will consider URS log event 15-20003 as below</p>
+<figure id="attachment_4061" aria-describedby="caption-attachment-4061" style="width: 1202px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1.png"><img class="size-full wp-image-4061" src="http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1.png" alt="URS Log Message" width="1202" height="343" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1.png 1202w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1-300x86.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1-1024x292.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1-768x219.png 768w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/URSDefaultRouting1-1200x342.png 1200w" sizes="(max-width: 1202px) 100vw, 1202px" /></a><figcaption id="caption-attachment-4061" class="wp-caption-text">URS Log Message</figcaption></figure>
+<p>As you can see from picture above, this is &#8216;INTERACTION&#8217; level log and going to configure this as &#8216;STANDARD&#8217; level.</p>
+<h2>Configuration Steps</h2>
+<hr />
+<p>Steps to configure log event customization is as below</p>
+<ol>
+<li>Configure section <strong>&#8216;log-extended&#8217;</strong> in application options, if not available already</li>
+<li>Create new option <strong>&#8216;level-reassign-20003&#8217;</strong> and set value as <strong>&#8216;standard&#8217;</strong>. Here 20003 indicates log event id and valid options are as below
+<ul>
+<li><strong>alarm</strong> &#8211; log level will be set to Alarm.</li>
+<li><strong>standard</strong> &#8211; log level will be set to Standard.</li>
+<li><strong>interaction</strong> &#8211; log level will be to Interaction.</li>
+<li><strong>trace</strong> &#8211; log level will be set to Trace.</li>
+<li><strong>debug</strong>&#8211; log level will be to Debug.</li>
+<li><strong>none</strong> &#8211; log will not be recorded</li>
+</ul>
+</li>
+<li>Optional Configuration. Create option <strong>&#8216;level-reassign-disable&#8217;</strong> and set value to<strong> &#8216;false&#8217;. </strong>This is useful as setting this value to <strong>&#8216;true&#8217; </strong>disables log event customizations for this application.</li>
+</ol>
+<figure id="attachment_4121" aria-describedby="caption-attachment-4121" style="width: 595px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/09/level-reassign.png"><img class="size-full wp-image-4121" src="http://localhost/lakshmikanth/wp-content/uploads/2014/09/level-reassign.png" alt="Log Event Customisation" width="595" height="172" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/level-reassign.png 595w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/level-reassign-300x87.png 300w" sizes="(max-width: 595px) 100vw, 595px" /></a><figcaption id="caption-attachment-4121" class="wp-caption-text">Configuration Options</figcaption></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/09/24/genesys-customize-log-steps/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

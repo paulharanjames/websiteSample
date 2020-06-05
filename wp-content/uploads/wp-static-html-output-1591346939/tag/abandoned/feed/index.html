@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Abandoned &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/abandoned/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 10 Mar 2016 15:30:25 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Genesys CCPulse : How to display abandoned calls for Agent Group?</title>
+		<link>http://localhost/lakshmikanth/2016/03/10/genesys-ccpulse-how-to-display-abandoned-calls-for-agent-group/</link>
+					<comments>http://localhost/lakshmikanth/2016/03/10/genesys-ccpulse-how-to-display-abandoned-calls-for-agent-group/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 10 Mar 2016 15:30:25 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Abandoned]]></category>
+		<category><![CDATA[CCPulse]]></category>
+		<category><![CDATA[Reporting]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6551</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In our application, we want to find out how calls are reported and handled if the calls are abandoned at agent i.e.) customer disconnects call while it is ringing at agent station.</p>
+<p>It is not available at &#8216;out of box&#8217; definitions but fortunately easy to implement it.</p>
+<h2>Configure Abandoned Calls for Agent Groups</h2>
+<hr />
+<ul>
+<li>Configure below stat definition in your Reporting Stat Server</li>
+</ul>
+<figure id="attachment_6561" aria-describedby="caption-attachment-6561" style="width: 720px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2016/03/Abandoned-1.png" rel="attachment wp-att-6561"><img class="wp-image-6561 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2016/03/Abandoned-1.png" alt="Genesys CCPulse : Abandoned" width="720" height="281" srcset="http://localhost/lakshmikanth/wp-content/uploads/2016/03/Abandoned-1.png 720w, http://localhost/lakshmikanth/wp-content/uploads/2016/03/Abandoned-1-300x117.png 300w" sizes="(max-width: 720px) 100vw, 720px" /></a><figcaption id="caption-attachment-6561" class="wp-caption-text">Abandoned Call Definition</figcaption></figure>
+<ul>
+<li>Create/Modify agent group template to show this statistics</li>
+</ul>
+<figure id="attachment_6581" aria-describedby="caption-attachment-6581" style="width: 639px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/03/Abandoned-Agent-Group-1.png" rel="attachment wp-att-6581"><img class="wp-image-6581 size-full" src="/wp-content/uploads/2016/03/Abandoned-Agent-Group-1.png" alt="Genesys CCPulse : Abandoned Agent Group" width="639" height="487" /></a><figcaption id="caption-attachment-6581" class="wp-caption-text">Abandoned Agent Group</figcaption></figure>
+<ul>
+<li>Open configured view in CCPulse and make test calls to verify the result</li>
+</ul>
+<p>As you can see from the stat definition, you can use this statistics to track abandoned calls for agents and places as well.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/03/10/genesys-ccpulse-how-to-display-abandoned-calls-for-agent-group/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

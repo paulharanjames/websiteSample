@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GVP &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/gvp/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 04 Jun 2014 12:14:38 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Debugging VoiceXML applications using Composer</title>
+		<link>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/</link>
+					<comments>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 04 Jun 2014 12:14:38 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[Composer]]></category>
+		<category><![CDATA[GVP]]></category>
+		<category><![CDATA[Tips]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2191</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Do you know that you can debug voicexml applications using Genesys composer? Composer debugger is integrated with GVP to make test calls, trace calls and debug applications.</p>
+<h3><strong>Setup your debug session</strong></h3>
+<hr />
+<p>First you need to setup GVP debugger and then launch configuration. Please follow the steps below to setup GVP debugger</p>
+<ol>
+<li>Select <strong>Window</strong> &gt; <strong>Preferences</strong>, then expand <strong>Composer</strong> and select <strong>Debugging</strong>.</li>
+<li>Specify the following settings
+<ul>
+<li><strong>Network Interface</strong>. Composer debugging uses this setting to make the socket connection for the Debugger control channel. If you have multiple NIC cards of multiple networks (such as Wireless and LAN) select the interface on which GVP will communicate to your desktop.</li>
+</ul>
+</li>
+<li>Select GVP Debugger and specify:</li>
+</ol>
+<ul>
+<ul>
+<li><strong style="font-style: normal;">SIP Phone User Name</strong>.  This is the user name or phone number of your SIP Phone.</li>
+<li><strong style="font-style: normal;">SIP Phone Hostname/IP</strong>.  This is the IP address on which your SIP phone is running. Again, if you have multiple NIC cards or interfaces, make sure you specify the same IP address as corresponds to the Network Interface selected above.</li>
+<li><strong style="font-style: normal;">SIP Phone Port</strong>.  This is the port on which your SIP phone is running.</li>
+<li><strong style="font-style: normal;">Platform IP</strong>.  This is the IP address of your GVP Server.</li>
+<li><strong style="font-style: normal;">Platform</strong><strong style="font-style: normal;"> Port.</strong>  Resource Manager Port Number.</li>
+</ul>
+</ul>
+<p style="padding-left: 60px;">To create debug launch configuration, follow the steps below</p>
+<p> In the Project Explorer, expand the Composer Project and its callflows subfolder.</p>
+<ol>
+<li>Right-click on the callflow filename in the Project Explorer and select<strong>Debug as</strong> &gt; <strong>Debug Configurations</strong>.</li>
+<li>Expand <strong>Composer</strong> &#8211; <strong>GVP Debugger</strong>.</li>
+<li>Select <strong>New Configuration</strong>. The Debug Configurations dialog box opens.<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png"><img class="aligncenter wp-image-2271 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png" alt="Debug Configuration" width="798" height="642" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png 798w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration-300x241.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration-768x618.png 768w" sizes="(max-width: 798px) 100vw, 798px" /></a></li>
+<li>Name the configuration.</li>
+<li>Click the Create Automatically button to create a new project folder to save the metric traces and VXML pages as the calls are being executed. This folder appears in the Location field. Please note that there is currently no automatic cleanup so the number of files can become large. Clean up the debugging results by deleting the gvp-debug.&lt;timestamp&gt; folders from the Project Explorer. Each gvp-debug.&lt;timestamp&gt; folder corresponds to a single debug call that was made at the time specified by the timestamp.<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png"><img class="aligncenter size-full wp-image-2221" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png" alt="DebugConfig1" width="691" height="512" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png 691w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1-300x222.png 300w" sizes="(max-width: 691px) 100vw, 691px" /></a></li>
+<li>Click the SIP Phone Settings tab and provide your SIP Phone information if not already there from GVP Debugger Preferences<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png"><img class="aligncenter wp-image-2301 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png" alt="Debug SIP" width="1197" height="638" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png 1197w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-300x160.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-1024x546.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-768x409.png 768w" sizes="(max-width: 1197px) 100vw, 1197px" /></a></li>
+<li>Click the <strong>Application Settings</strong> tab and select <strong>Callflow Diagram<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png"><img class="aligncenter wp-image-2251 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png" alt="Debug App Options" width="1196" height="638" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png 1196w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-300x160.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-1024x546.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-768x410.png 768w" sizes="(max-width: 1196px) 100vw, 1196px" /></a></strong></li>
+<li>Input variables in a callflow diagram can be initialized in a Debuggercall using the Extra Parameters field in the Debug Configurations &gt;Application Settings tab. The Parameter names should match the &#8220;Input&#8221; variable defined in the <a href="http://docs.genesys.com/Documentation/Composer/8.1.3/Help/EntryBlock#Variables_Property">Entry Block</a> of the Callflow diagram.</li>
+<li>Click <strong>Apply</strong>.</li>
+<li>Click <strong>Debug</strong>. This will automatically dial out your SIP Phone.</li>
+<li>Accept the call and you will be connected to the application on GVP. Composer switches to the GVP Debugging perspective.</li>
+</ol>
+<h3><strong>How do you start debugging your application?</strong></h3>
+<hr />
+<p>Alternatively, once it is setup, you can start a debugging session in the following ways:</p>
+<ul>
+<li>Right-click on the diagram/VXML file and Select <strong>Debug As</strong> &gt; <strong>Debug Callflow</strong>.</li>
+<li>On the main toolbar, there is a Debug button <img class="alignnone" src="http://docs.genesys.com/images/7/71/CVDebugbutton.gif" alt="" width="38" height="23" />. Clicking this button launches the most recently used debug configuration. You can also use the keyboard shortcuts F11 (for Debug).</li>
+</ul>
+<p>Once the call is initiated, you will see a red box around the block, which indicates where the call is currently paused.</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png"><img class="aligncenter size-full wp-image-2291" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png" alt="Debug Perspective" width="1592" height="757" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png 1592w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-300x143.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1024x487.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-768x365.png 768w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1536x730.png 1536w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1200x571.png 1200w" sizes="(max-width: 1592px) 100vw, 1592px" /></a></p>
+<p>&nbsp;</p>
+<p><strong>1 &#8211; Debug View.</strong> This view <span style="color: #000000;">shows the name of the callflow or workflow diagram being debugged, as well as the status of the debug progress or result</span></p>
+<p><strong>2 &#8211; Variables</strong>. <span style="color: #000000;">The Variables view displays information about the variables associated with the stack frame selected in the Debug view</span></p>
+<p><strong>3 &#8211; CallFlow.</strong> Call flow diagram will be display if you are debugging call flow. Active block will be surrounded by Red box</p>
+<p><strong>4 &#8211; Call Trace Window.</strong>  Call traces will be visible at this window</p>
+<p><strong>5 &#8211; Expressions</strong>. <span style="color: #000000;">Use the Expressions view to inspect data from a stack frame of a suspended thread, and other places</span></p>
+<p>Click the step over  button  <img class="alignnone" src="http://docs.genesys.com/images/3/3a/CVDebugTabStepOver.gif" alt="" width="27" height="24" />on ‘Debug’ view to single step through the blocks. When stepping t through call flow diagram call traces will become visible in the call trace window</p>
+<p>&nbsp;</p>
+<p>Also, you can watch and change variable values during debugging session. This will be useful if you want to test different scenarios.</p>
+<p>To change value, expand the variable, right click and select ‘<strong>Change value’</strong>. Specify new value and click ‘Ok’ to proceed with your debug session.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>In the application settings (Step 8), you can specify DNIS to verify GVP Profiles are configured correctly.</li>
+<li>Similarly, you can specify application URL path to verify that application is deployed correctly to the web server and URL is accessible</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

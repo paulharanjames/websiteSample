@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>SQL Server &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/sql-server/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Fri, 05 Dec 2014 23:01:40 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>MSSQL Server 2008 &#8211; Reset sa password</title>
+		<link>http://localhost/lakshmikanth/2014/12/05/mssql-server-2008-reset-sa-password/</link>
+					<comments>http://localhost/lakshmikanth/2014/12/05/mssql-server-2008-reset-sa-password/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 05 Dec 2014 23:01:40 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[SQL Server]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=4681</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In this week, we were implementing PoC environment for voice analytics solution and received VMware image from vendor. After hosting image in our environment, which obviously required server name, IP address and domain changes, they were unable to login into SQL Server 2008 database.</p>
+<p>We need to do &#8216;sa&#8217; password reset and followed steps below for the same. Hope this helps.</p>
+<ul>
+<li>From windows services, stop <strong>SQLServer(MSSQLServer)</strong> service</li>
+</ul>
+<figure id="attachment_4791" aria-describedby="caption-attachment-4791" style="width: 636px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQL_Server_Services_001.png"><img class="wp-image-4791 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQL_Server_Services_001.png" alt="SQLServer Services" width="636" height="127" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQL_Server_Services_001.png 636w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQL_Server_Services_001-300x60.png 300w" sizes="(max-width: 636px) 100vw, 636px" /></a><figcaption id="caption-attachment-4791" class="wp-caption-text">SQLServer Services</figcaption></figure>
+<ul>
+<li>Open SQL Server Configuration Manager ( <strong>Start -&gt; All Programs -&gt; Microsoft SQL Server 2008 R2 -&gt; Configuration Tools -&gt; SQL Server Configuration Manager</strong>)</li>
+<li>Select <strong>SQL Server Services -&gt; SQL Server(MSSQLServer)</strong>. Right click and select <strong>&#8216;Properties&#8217;</strong></li>
+<li>Go to<strong> &#8216;Advanced&#8217;</strong> tab and change startup parameters by prefixing <strong>-m; </strong>as below</li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_Properties_001.png"><img class="aligncenter size-full wp-image-4781" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_Properties_001.png" alt="Prefix -m;" width="393" height="434" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_Properties_001.png 393w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_Properties_001-272x300.png 272w" sizes="(max-width: 393px) 100vw, 393px" /></a></p>
+<ul>
+<li>Click <strong>&#8216;Ok&#8217;</strong> to save the changes</li>
+<li>Start <strong>&#8216;SQLServer(MSSQLServer)&#8217;</strong> from windows services</li>
+<li>Open command prompt (<strong>Start -&gt; Run -&gt; cmd </strong>and press<strong> &#8216;Enter&#8217;</strong>)</li>
+<li>Type <strong>&#8216;sqlcmd&#8217; </strong>to start SQL command window and create new user as below</li>
+</ul>
+<figure id="attachment_4701" aria-describedby="caption-attachment-4701" style="width: 669px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/CreateLogin.png"><img class="wp-image-4701 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/CreateLogin.png" alt="Create Login" width="669" height="147" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/CreateLogin.png 669w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/CreateLogin-300x66.png 300w" sizes="(max-width: 669px) 100vw, 669px" /></a><figcaption id="caption-attachment-4701" class="wp-caption-text">sqlcmd</figcaption></figure>
+<pre class="lang:tsql decode:true " title="Create Login">create login lucky with password='BeHappy#3'
+print 'User lucky is created'
+sp_addsrvrolemember ‘lucky’, ‘sysadmin’
+go
+</pre>
+<ul>
+<li> Stop SQLServer(MSSQLService) from windows services</li>
+<li>Remove <strong>&#8216;-m&#8217; </strong>from startup parameters, click &#8216;Ok&#8217; to apply the changes and start SQLServer(MSSQLService) service</li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_default.png"><img class="aligncenter size-full wp-image-4741" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_default.png" alt="SQLServer_default" width="392" height="433" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_default.png 392w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/SQLServer_default-272x300.png 272w" sizes="(max-width: 392px) 100vw, 392px" /></a></p>
+<ul>
+<li>Open &#8216;<strong>SQL Server Management Studio&#8217;</strong> and login using newly created account (<em>username : lucky, password=&#8217;BeHappy#3&#8242;</em>)</li>
+<li>Right-click login account <strong>&#8216;sa&#8217;</strong> from <strong>&#8216;Security -&gt; Login&#8217; </strong>and select <strong>&#8216;Properties&#8217;</strong></li>
+</ul>
+<figure id="attachment_4721" aria-describedby="caption-attachment-4721" style="width: 433px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/sa_properties.png"><img class="wp-image-4721 " src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/sa_properties.png" alt="sa_properties" width="433" height="551" /></a><figcaption id="caption-attachment-4721" class="wp-caption-text">&#8216;sa&#8217; login properties</figcaption></figure>
+<ul>
+<li>Change the password</li>
+</ul>
+<figure id="attachment_4711" aria-describedby="caption-attachment-4711" style="width: 700px" class="wp-caption aligncenter"><img class="wp-image-4711 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/sa_password.png" alt="sa_password" width="700" height="285" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/sa_password.png 700w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/sa_password-300x122.png 300w" sizes="(max-width: 700px) 100vw, 700px" /><figcaption id="caption-attachment-4711" class="wp-caption-text">Reset &#8216;sa&#8217; password</figcaption></figure>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/12/05/mssql-server-2008-reset-sa-password/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

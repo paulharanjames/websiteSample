@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Windows &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/windows/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Sun, 18 Dec 2016 22:33:45 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>How do I change my own password in Windows 2012 RDP session?</title>
+		<link>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/</link>
+					<comments>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Sun, 18 Dec 2016 22:33:45 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[RDP]]></category>
+		<category><![CDATA[Remote Desktop]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6911</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				We recently migrated our servers to Windows 2012 and it doesn&#8217;t have windows security option to change your password (like in Windows 2008). In this post, I will explain two options to change password in Windows 2012 on RDP session</p>
+<h2>Option 1 : Change password in Remote Desktop Session (RDP)</h2>
+<hr />
+<ul>
+<li>Press CTRL + ALT + END on remote session. This is equivalent to CTRL + ALT + DEL on your local machine and you will be able to change password.</li>
+</ul>
+<h2>Option 2: Change password in RDP session through jump server</h2>
+<hr />
+<p>It is common that customer provide access to servers (For example : APPSERVER01) through jump server (Example: GATEWAYSERVER01) . In these scenarios, CTRL + ALT + END will not work as you RDP into jump server &#8216;GATEWAYSERVER01&#8217; and from jump server, RDP into application server &#8216;APPSERVER01&#8217;. In this case, use below steps to change your password</p>
+<ul>
+<li>Press Windows Key + R and type &#8216;OSK&#8217; to bring onscreen keyboard</li>
+<li>Press &#8216;CTRL&#8217; + &#8216;ALT&#8217; in your keyboard and using mouse,  press &#8216;DEL&#8217; button on on-screen keyboard</li>
+<li>It will bring &#8216;Change Passsword&#8217; option</li>
+</ul>
+<p>If you know about any other options, share it in your comments</p>
+<p>&nbsp;		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Scheduled Tasks &#8211; Result Codes</title>
+		<link>http://localhost/lakshmikanth/2015/01/14/scheduled-tasks-result-codes/</link>
+					<comments>http://localhost/lakshmikanth/2015/01/14/scheduled-tasks-result-codes/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 14 Jan 2015 12:09:09 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[Scheduled Tasks]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=5032</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				List of windows scheduled task result codes below</p>
+<ul>
+<li>0 or 0x0: The operation completed successfully.</li>
+<li>1 or 0x1: Incorrect function called or unknown function called.</li>
+<li>2 or 0x2: File not found.</li>
+<li>10 or 0xa: The environment is incorrect.</li>
+<li>0x41300: Task is ready to run at its next scheduled time.</li>
+<li>0x41301: Task is currently running.</li>
+<li>0x41302: Task is disabled.</li>
+<li>0x41303: Task has not yet run.</li>
+<li>0x41304: There are no more runs scheduled for this task.</li>
+<li>0x41306: Task is terminated.</li>
+<li>0x8004130F: Credentials became corrupted <a title="Task schedular corrupted credentials." href="http://support.microsoft.com/kb/328773">(*)</a></li>
+<li>0x8004131F: An instance of this task is already running.</li>
+<li>0x80070002: Basically something like file not available (2147942402)</li>
+<li>0x800704DD: The service is not available (is &#8216;Run only when an user is logged on&#8217; checked?)</li>
+<li>0xC000013A: The application terminated as a result of a CTRL+C.</li>
+<li>0xC06D007E: Unknown software exception</li>
+</ul>
+<p>and useful links to troubleshoot scheduled task issues</p>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/aa383604" target="_blank" rel="noopener noreferrer">Task Scheduler Error and Success Constants</a></li>
+<li><a href="http://support.microsoft.com/kb/308558" target="_blank" rel="noopener noreferrer">How to troubleshoot scheduled tasks in Windows XP and in Windows Server 2003</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/01/14/scheduled-tasks-result-codes/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

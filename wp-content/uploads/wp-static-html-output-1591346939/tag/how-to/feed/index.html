@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>How to &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/how-to/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Tue, 25 Apr 2017 16:28:50 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Genesys URS report_targets : Why is it useful but should not use it?</title>
+		<link>http://localhost/lakshmikanth/2017/04/25/genesys-urs-report_targets-useful-not-use/</link>
+					<comments>http://localhost/lakshmikanth/2017/04/25/genesys-urs-report_targets-useful-not-use/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 25 Apr 2017 16:28:50 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6984</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In some cases, we want to understand the routing decision by URS, especially if an interaction is queued for multiple targets like agent groups. In this post, you will learn about &#8216;report_targets&#8217; option, how it works and recommended way to use it in production environment.</p>
+<p>From version 7.x onwards,  Genesys URS expose routing decision using key value pairs.  If enabled, URS will attach following informatio for each interaction</p>
+<ul>
+<li> Routing Rule, Target Group (Agent Group or Place Group), Skill Expression while waiting and after the call is routed to</li>
+<li>Agent</li>
+<li>Place</li>
+<li>Tenant</li>
+<li>Strategy</li>
+</ul>
+<h2>How to enable routing decision information?</h2>
+<hr />
+<p>To enable routing decision information, set report_targets value to true.</p>
+<p><strong>Note:</strong>  Due to high resource usage, it is not recommended to enable this functionality in production environment.</p>
+<h2>How it works?</h2>
+<hr />
+<p>If enabled, URS attaches high level target information (Routing Rules, Skill Expressions, Agent Groups, Place Groups) while waiting.</p>
+<pre class="lang:default decode:true" title="While Waiting">request to 65200(TServer) message RequestAttachUserData
+    AttributeReferenceID    13
+    AttributeUserData    [34] 00 01 00 00..
+        'RTargetAgentGroup'    'VAG_Skill1'
+    AttributeConnID    006c029a6685d004
+    AttributeThisDN    '9001'
+
+</pre>
+<p>[table id=9 /]</p>
+<p>When the interaction is routed, URS attaches information about target object</p>
+<pre class="lang:default decode:true">request to 65200(TServer) message RequestUpdateUserData
+	AttributeReferenceID	14
+	AttributeUserData	[561] 00 14 00 00..
+		'RVQID'	'SQBENM69RP39R22KR9QUBT1RQO000002'
+		'RTargetTypeSelected'	'2'
+		'RTargetRuleSelected'	''
+		'RTargetObjectSelected'	'VAG_Skill1'
+		'RTargetObjSelDBID'	'115'
+		'RTargetAgentSelected'	'agent01'
+		'RTargetPlaceSelected'	'Place_6001'
+		'RTenant'	'Resources'
+		'RStrategyName'	'Route2ChicagoAgentsLowPriority'
+		'RStrategyDBID'	'264'
+		'CBR-actual_volume'	''
+		'CBR-Interaction_cost'	''
+		'CBR-contract_DBIDs'	''
+		'CBR-IT-path_DBIDs'	''
+		'RRequestedSkillCombination'	''
+		'RRequestedSkills'(list) 
+		'RTargetRequested'	'VAG_Skill1'
+		'CustomerSegment'	'default'
+		'ServiceType'	'default'
+		'ServiceObjective'	''
+	AttributeConnID	006c029a6685d004
+	AttributeThisDN	'9001'</pre>
+<p>[table id=10 /]</p>
+<h2>What if you want to use it anyway in production environment?</h2>
+<hr />
+<p>If you want to enable it anyway for production environment, I recommend to use &#8216;SetCallOption&#8217; function and list objects configuration to enable it for particular service /interaction type.</p>
+<p>For more information about &#8216;report_targets&#8217; and &#8216;SetCallOption&#8217; function, refer to <a href="https://docs.genesys.com/Documentation">Genesys URS reference manual.</a>		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2017/04/25/genesys-urs-report_targets-useful-not-use/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How do I change my own password in Windows 2012 RDP session?</title>
+		<link>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/</link>
+					<comments>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Sun, 18 Dec 2016 22:33:45 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[RDP]]></category>
+		<category><![CDATA[Remote Desktop]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6911</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				We recently migrated our servers to Windows 2012 and it doesn&#8217;t have windows security option to change your password (like in Windows 2008). In this post, I will explain two options to change password in Windows 2012 on RDP session</p>
+<h2>Option 1 : Change password in Remote Desktop Session (RDP)</h2>
+<hr />
+<ul>
+<li>Press CTRL + ALT + END on remote session. This is equivalent to CTRL + ALT + DEL on your local machine and you will be able to change password.</li>
+</ul>
+<h2>Option 2: Change password in RDP session through jump server</h2>
+<hr />
+<p>It is common that customer provide access to servers (For example : APPSERVER01) through jump server (Example: GATEWAYSERVER01) . In these scenarios, CTRL + ALT + END will not work as you RDP into jump server &#8216;GATEWAYSERVER01&#8217; and from jump server, RDP into application server &#8216;APPSERVER01&#8217;. In this case, use below steps to change your password</p>
+<ul>
+<li>Press Windows Key + R and type &#8216;OSK&#8217; to bring onscreen keyboard</li>
+<li>Press &#8216;CTRL&#8217; + &#8216;ALT&#8217; in your keyboard and using mouse,  press &#8216;DEL&#8217; button on on-screen keyboard</li>
+<li>It will bring &#8216;Change Passsword&#8217; option</li>
+</ul>
+<p>If you know about any other options, share it in your comments</p>
+<p>&nbsp;		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/12/18/change-password-windows-2012-rdp-session/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Simple SFTP Server Tool for testing and development</title>
+		<link>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/</link>
+					<comments>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 26 May 2016 18:00:58 +0000</pubDate>
+				<category><![CDATA[.NET]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6751</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Here is the simple SFTP Server for lab testing purpose. It is light-weight, simple and easy to use. Like all other tools from me, just unzip and run it in your server or desktop.</p>
+<h2>Getting Started</h2>
+<hr />
+<ul>
+<li>Download and unzip file from dropbox <a href="https://www.dropbox.com/sh/gh42x5vxaq0owdx/AAAepISi_jAOJu3Qk37zLbAqa?dl=0">here</a></li>
+<li>Run SFTPServer.exe</li>
+<li>Press &#8216;Start&#8217; button to start SFTP Server</li>
+</ul>
+<p><a href="/wp-content/uploads/2016/05/Simple-SFTPServer-1.png"><img class="aligncenter size-full wp-image-6761" src="/wp-content/uploads/2016/05/Simple-SFTPServer-1.png" alt="Simple SFTPServer" width="960" height="596" /></a></p>
+<h2>Features</h2>
+<hr />
+<ul>
+<li>Easy to use simple SFTP Server</li>
+<li>Just unzip and run</li>
+<li>Requires .NET Framework 4.5.2 and runs on any windows platform</li>
+<li>Supports public/private key authentication (RSA Key)</li>
+</ul>
+<h2>When and why should you run this application?</h2>
+<hr />
+<p>Mostly used for development and testing purpose. Instead of spending hours trying to setup SFTP Server and users,  you can run this application locally.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Genesys : How EWT &#8211; Estimate Wait Time is calculated?</title>
+		<link>http://localhost/lakshmikanth/2016/05/20/genesys-ewt-estimate-wait-time-calculated/</link>
+					<comments>http://localhost/lakshmikanth/2016/05/20/genesys-ewt-estimate-wait-time-calculated/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 20 May 2016 12:40:35 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Routing]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6661</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				As we all know, agent can handle calls from multiple queues in Genesys and is tricky to find EWT (Estimate Wait Time) for call during routing. I find that Genesys algorithm to be smart and most appropriate.</p>
+<h3>How it is calculated?</h3>
+<hr />
+<p>Please find the details below (from Stat Server deployment guide)</p>
+<p><strong>Estimated Wait Time (EWT) =  AHT * ( CIQU / (AA * EP))</strong></p>
+<p>where</p>
+<ul>
+<li><strong>AHT (Average Handle Time)</strong> is calculated as <strong>TotalTime(Mask1, Interval)/TotalNumber(Mask2, Interval)</strong>
+<ul>
+<li>Mask1 includes ACW time i.e. <em>CallReleased, ACWCompleted, CallMissed, ACWMissed</em> events are used for calculation.</li>
+<li>Mask2 is for call i.e.) <em>CallReleased</em> and <em>CallMissed</em> events only</li>
+<li>If no calls are handled by agent for this queue, AHT is assumed to be 90 seconds</li>
+</ul>
+</li>
+<li><strong>CIQU (Calls in Queue Unassigned) – </strong>Calls waiting in queue (CIQ) waiting for agent
+<ul>
+<li>CIQU = 0 if agents in ready state (AR) &gt; CIQ</li>
+<li>CIQU = CIQ if no agents are currently ready</li>
+<li>CIQU = CIQ – AR if some agents are in ready state</li>
+</ul>
+</li>
+<li><strong>AA (Active Agents)</strong> – Agent logged in and is busy or not ready to take calls. If AA = 0, 0.0001 is used</li>
+<li><strong>EP (Effective Portion) – </strong>Total time spent by agent to process calls from the queue divided by total time spent by agent to process all calls. Default value : 1</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/05/20/genesys-ewt-estimate-wait-time-calculated/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to disable trackpad on bootcamp?</title>
+		<link>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/</link>
+					<comments>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 30 Dec 2015 16:53:09 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[bootcamp]]></category>
+		<category><![CDATA[trackpad]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6181</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Recently, I installed windows 10 using bootcamp on Mac pro and want to disable trackpad. In this post, I will explain two possible solutions for this.</p>
+<h3>Solution 1 &#8211; Disable Trackpad Hardware</h3>
+<hr />
+<ul>
+<li>Click <strong>Start -&gt; Settings</strong> and Search for <strong>Device Manager</strong></li>
+<li>Expand &#8216;<strong>Human Interface Devices&#8217;</strong> and select <strong>Apple SPI Trackpad</strong></li>
+<li>Right Click<strong> &#8216;Apple SPI Trackpad&#8217;</strong> and select <em><strong>&#8216;disable&#8217;</strong></em></li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad.png" rel="attachment wp-att-6191"><img class="aligncenter wp-image-6191 size-large" src="/wp-content/uploads/2015/12/Disable_Trackpad-1024x750.png" alt="Disable Trackpad" width="600" height="439" srcset="http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-1024x750.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-300x220.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-768x563.png 768w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad.png 1171w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<h3>Solution 2 &#8211; Using Third Party Tool</h3>
+<hr />
+<ul>
+<li>Download and Install Trackpad Magic from<a href="http://pocketlim.com/" target="_blank" rel="noopener noreferrer"> http://pocketlim.com/</a></li>
+<li>Right-click the Trackpad Magic icon that appears in your system tray.</li>
+<li>Click<em><strong> &#8220;Disable Apple Trackpad&#8221;</strong></em> to completely disable the touchpad. Click <em><strong>&#8220;Automatically Disable Trackpad When External Mouse is Plugged in&#8221;</strong> </em>to only disable the trackpad if you connect a mouse.</li>
+</ul>
+<p><a href="/wp-content/uploads/2015/12/PocketLim.png" rel="attachment wp-att-6201"><img class="aligncenter wp-image-6201" src="/wp-content/uploads/2015/12/PocketLim-300x79.png" alt="Disable Trackpad on bootcamp" width="342" height="95" /></a>		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Genesys Workspace Desktop &#8211; Custom Screen Pop</title>
+		<link>http://localhost/lakshmikanth/2015/02/25/genesys-workspace-desktop-custom-screen-pop/</link>
+					<comments>http://localhost/lakshmikanth/2015/02/25/genesys-workspace-desktop-custom-screen-pop/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 25 Feb 2015 14:50:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Customization]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[MVVM]]></category>
+		<category><![CDATA[Workspace]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=5111</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In Jan 2015, I attended Genesys Customer Experience demo center in Frimley, UK and was really impressed with new setup &amp; product capabilities especially Conversation Manager. It was best demonstration from Genesys by some distance and recommend you to request or attend demo from your account Manager. Apart from Converstation Manager &amp; Orchestration Server for cross channel capabilities , Genesys workspace desktop and Speech analytics gained good attention from other members.</p>
+<p>Few weeks back,  I was asked to assist in showing custom screen pop using Genesys workspace desktop. Finally, I am able to allocate time and worked on this week. As usual with any new projects, there are challenges as below</p>
+<ul>
+<li>Genesys Documentation can be better</li>
+<li>Workspace is based on <a href="http://en.wikipedia.org/wiki/Model_View_ViewModel">MVVM</a> architecture pattern. Personally, I  prefer MVVM  model for desktop applications but finding an resource with MVVM and Genesys capability is rare</li>
+</ul>
+<p>If you understand MVVM and Genesys, it is easy to do customization on Workspace. In this post, I will show workspace customization to populate web page for inbound call</p>
+<figure id="attachment_5121" aria-describedby="caption-attachment-5121" style="width: 1024px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2015/02/Genesys-Workspace.png"><img class="size-full wp-image-5121" src="http://localhost/lakshmikanth/wp-content/uploads/2015/02/Genesys-Workspace.png" alt="Genesys Workspace" width="1024" height="539" srcset="http://localhost/lakshmikanth/wp-content/uploads/2015/02/Genesys-Workspace.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2015/02/Genesys-Workspace-300x158.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2015/02/Genesys-Workspace-768x404.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption id="caption-attachment-5121" class="wp-caption-text">Genesys Workspace</figcaption></figure>
+<p>In my case, screen pop is custom view to show web page and is based on user data &#8216;AppURL&#8217;. For testing, I populated it with BBC website URL.</p>
+<p><b>Sample Solution</b></p>
+<hr />
+<ul>
+<li>Create view (SampleView), view model (SampleViewModel) and model (ISampleViewModel) class.</li>
+</ul>
+<p>In my case, SampleView contains webbrowser control and &#8216;SampleViewModel&#8217; contains properties and events for databinding.  Problem is that webbrowser.source is not dependency property and have to use workaround as below</p>
+<pre class="theme:monokai lang:c# decode:true" title="Webbrowser Binding">public static class WebBrowserUtility
+{
+    public static readonly DependencyProperty BindableSourceProperty =
+        DependencyProperty.RegisterAttached("BindableSource", typeof(string), typeof(WebBrowserUtility), new UIPropertyMetadata(null, BindableSourcePropertyChanged));
+
+    public static string GetBindableSource(DependencyObject obj)
+    {
+        return (string) obj.GetValue(BindableSourceProperty);
+    }
+
+    public static void SetBindableSource(DependencyObject obj, string value)
+    {
+        obj.SetValue(BindableSourceProperty, value);
+    }
+
+    public static void BindableSourcePropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+    {
+        WebBrowser browser = o as WebBrowser;
+        if (browser != null)
+        {
+            string uri = e.NewValue as string;
+            browser.Source = !String.IsNullOrEmpty(uri) ? new Uri(uri) : null;
+        }
+    }
+
+}</pre>
+<p>&nbsp;</p>
+<pre class="theme:monokai lang:xhtml decode:true" title="Webbrowser XAML">&lt;WebBrowser ns:WebBrowserUtility.BindableSource="{Binding WebAddress}"
+    ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+    ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+    Width="300"
+    Height="200" /&gt;</pre>
+<p>&nbsp;</p>
+<ul>
+<li>Subscribe to Telephony events as below</li>
+</ul>
+<pre class="theme:monokai lang:c# decode:true " title="Subscribe"> //Subscribe to Telephony Events
+
+ var interactionManager = container.Resolve&lt;IInteractionManager&gt;();
+
+ if (interactionManager != null)
+   {
+     //Receive interaction events
+     interactionManager.InteractionEvent += interactionManager_InteractionEvent;
+   }</pre>
+<ul>
+<li> Populate web browser control on &#8216;Ringing&#8217; event as below</li>
+</ul>
+<pre class="theme:monokai lang:c# decode:true" title="Screenpop Data">var sUrl = string.Empty;
+var interaction = e.Value;
+
+if (interaction != null)
+{
+    if (interaction is IInteractionVoice)
+    {
+        IMessage eventMsg = interaction.EntrepriseLastInteractionEvent;
+
+        if (eventMsg == null) return;
+            //MessageBox.Show(eventMsg.Name);
+            if (eventMsg.Name == "EventRinging")
+            {
+                KeyValueCollection userData = (eventMsg as EventRinging).UserData;
+                if (userData == null) return;
+
+                if (userData.ContainsKey("AppURL"))
+                    sUrl = userData["AppURL"].ToString();
+
+                if (!string.IsNullOrEmpty(sUrl))
+                    viewModel.Source=sUrl;
+
+            }
+
+    }</pre>
+<p>&nbsp;</p>
+<p>Some useful links for Genesys workspace customization as below</p>
+<ul>
+<li><a href="http://docs.genesys.com/Documentation/IW/8.5.1/Developer/CustomizeViewsandRegions#Creating_a_New_View" target="_blank" rel="noopener noreferrer">Creating a New View</a></li>
+<li><a href="http://docs.genesys.com/Documentation/IW/8.5.1/Developer/WriteCustomApplications#Deploying_Your_Custom_Module_into_the_Genesys_Out-Of-The-Box_Application" target="_blank" rel="noopener noreferrer"><span id="Deploying_Your_Custom_Module_into_the_Genesys_Out-Of-The-Box_Application" class="mw-headline">Deploying Your Custom Module into the Genesys Out-Of-The-Box Application</span></a></li>
+<li><a href="http://www.codeproject.com/Articles/819294/WPF-MVVM-step-by-step-Basics-to-Advance-Level" target="_blank" rel="noopener noreferrer">WPF MVVM step by step (Basics to Advance Level)</a></li>
+<li><a href="http://www.codeproject.com/Articles/165368/WPF-MVVM-Quick-Start-Tutorial" target="_blank" rel="noopener noreferrer">WPF/MVVM Quick Start Tutorial</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/02/25/genesys-workspace-desktop-custom-screen-pop/feed/</wfw:commentRss>
+			<slash:comments>39</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Genesys CCPulse &#8211; How to show when agent logged in?</title>
+		<link>http://localhost/lakshmikanth/2014/09/10/genesys-ccpulse-logged-in/</link>
+					<comments>http://localhost/lakshmikanth/2014/09/10/genesys-ccpulse-logged-in/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 10 Sep 2014 16:49:29 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[CCPulse]]></category>
+		<category><![CDATA[Reporting]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=3681</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Few months ago, I wrote an post about Genesys CCPulse powerful feature (<a title="CCPulse – Very powerful but less popular feature" href="http://www.lakshmikanth.com/most-powerful-and-less-popular-feature-in-ccpulse/">Read here</a>) and explained how JScript language can be used to show various other details within CCPulse. Last week, I had requirement from contact center supervisor to view agent&#8217;s login time i.e.) when they logged in. We needed this information to analyze default routed calls by looking at load on Genesys servers and WAN bandwidth.</p>
+<p>In this post, I will explain the steps to show agent&#8217;s logged in time in CCPulse as below</p>
+<p><a href="/wp-content/uploads/2014/09/lastloggedin.png"><img class="aligncenter wp-image-3701 size-full" src="/wp-content/uploads/2014/09/lastloggedin.png" alt="Genesys CCPulse - lastloggedin" width="726" height="139" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/lastloggedin.png 726w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/lastloggedin-300x57.png 300w" sizes="(max-width: 726px) 100vw, 726px" /></a></p>
+<p>&nbsp;</p>
+<h1>Step 1 : Configure StatServer to store login data</h1>
+<hr />
+<p>&nbsp;</p>
+<ul>
+<li>Create new database [StatServerDB] and initialize it with scripts from StatServer folder. Refer to StatServer Deployment Guide Appendix A for more information about database and tables</li>
+<li>Login into CME, create new DAP [RealtimeReportingDAP] application and configure it to use [StatServerDB]</li>
+<li>Open StatServer application, add [RealtimeReportingDAP] in the connections DAP</li>
+<li>Go to &#8216;Options&#8217; tab in Statserver application, open section &#8216;statserver&#8217; and set option &#8216;login-table&#8217; to &#8216;true&#8217;</li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/09/StatServerOption.png"><img class="aligncenter wp-image-3711 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/09/StatServerOption.png" alt="Genesys CCPulse - StatServerOption" width="479" height="459" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/StatServerOption.png 479w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/StatServerOption-300x287.png 300w" sizes="(max-width: 479px) 100vw, 479px" /></a></p>
+<p>&nbsp;</p>
+<h1>Step 2: Configure CCPulse application</h1>
+<hr />
+<p>&nbsp;</p>
+<ul>
+<li>Open CCPulse application -&gt; Options  -&gt; CustomStatistic section and change &#8216;ExtendedCurrentStatus&#8217; to &#8216;true&#8217;</li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/09/CCPulseCustomStatistic.png"><img class="aligncenter wp-image-3721 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/09/CCPulseCustomStatistic.png" alt="Genesys CCPulse - CustomStatistic" width="578" height="202" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/CCPulseCustomStatistic.png 578w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/CCPulseCustomStatistic-300x105.png 300w" sizes="(max-width: 578px) 100vw, 578px" /></a></p>
+<p>&nbsp;</p>
+<h1>Step 3: Create &#8216;LastLoggedIn&#8217; field in CCPulse Template</h1>
+<hr />
+<ul>
+<li> Login into CCPulse application and open &#8216;Template Wizard&#8217;</li>
+<li>Select object type as &#8216;Agent&#8217;, select the template to modify it from the options and click &#8216;Next&#8217;</li>
+<li>Click &#8216;Formula&#8217; to create new reporting field and click &#8216;Properties&#8217; to open expression editor</li>
+<li>Copy and paste the code below. Update database details in the code and Click &#8216;Ok&#8217; to complete it.</li>
+<li>Open agent report using this template and you will see last login time of the agent</li>
+</ul>
+<p><a href="/wp-content/uploads/2014/09/lastloggedin.png"><img class="aligncenter size-full wp-image-3701" src="/wp-content/uploads/2014/09/lastloggedin.png" alt="Genesys CCPulse - LastLoggedIn" width="726" height="139" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/09/lastloggedin.png 726w, http://localhost/lakshmikanth/wp-content/uploads/2014/09/lastloggedin-300x57.png 300w" sizes="(max-width: 726px) 100vw, 726px" /></a></p>
+<pre class="toolbar-overlay:false lang:vb decode:true" title="Last Login Script">var objRs=new ActiveXObject("ADODB.Recordset")
+var strConn="Provider=SQLOLEDB.1;Data Source=&lt;SQLServer Instance&gt;;Initial Catalog=&lt;Statserver Database&gt;;User Id=&lt;UserName&gt;;Password=&lt;UserPassword&gt;;"
+strEmployeeID=state.LoginID
+strQuery=" select top 1 dbo.ConvertToLocalTime([Time]) as Logintime from [Login] "
+strQuery+="where LOGINID='"+strEmployeeID+"' "
+strQuery+=" and left (dbo.ConvertToLocalTime([Time]),11) = left(getdate(),11) "
+strQuery+=" and status = '1' order by logintime desc"
+objRs.Open(strQuery,strConn,3,1,1)
+var resultCount="";
+if(!objRs.BOF)
+{
+objRs.MoveFirst();
+while(!objRs.EOF)
+{
+if(objRs("Logintime").value!=null)
+{
+	resultCount=objRs("Logintime").value
+}
+objRs.MoveNext();
+}
+}
+objRs.Close
+objRs=null;
+resultCount; 
+</pre>
+<p>StatServer stores time in Unix format and hence, use below SQL script to convert field into local time</p>
+<pre class="toolbar-overlay:false lang:tsql decode:true " title="ConvertToLocalTime">create function converttolocaltime (@timestamp int)
+returns datetime
+as
+begin
+declare @ret datetime
+declare @offset bigint, @localdate bigint;
+    set @offset = datediff(second,getdate(),getutcdate());
+    set @localdate = @timestamp - @offset;
+select @ret = dateadd(second, @localdate, '1970/01/01 00:00:00')
+return @ret
+end
+go</pre>
+<p>&nbsp;		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/09/10/genesys-ccpulse-logged-in/feed/</wfw:commentRss>
+			<slash:comments>5</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Genesys GPlus &#8211; How to configure alarm conditions for GPlus Adapter?</title>
+		<link>http://localhost/lakshmikanth/2014/06/18/how-to-configure-alarm-conditions-for-gplus-adapter/</link>
+					<comments>http://localhost/lakshmikanth/2014/06/18/how-to-configure-alarm-conditions-for-gplus-adapter/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 18 Jun 2014 14:29:22 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[GPlusAdapter]]></category>
+		<category><![CDATA[Tips]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2401</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				<span style="color: #000000;">GPlus Adapter for Aspect eWFM supports alarm codes for major errors, so that it can be monitored on SCI or Genesys Administrator. For this feature to work correctly, alarm codes must match up with log event id defined in the alarm condition.</span></p>
+<div style="color: #000000;">In my environment, I configured GPlus Adapter to send alarm codes as below</div>
+<div style="color: #000000;"></div>
+<div style="color: #000000;"><img class="aligncenter size-full wp-image-2421" src="/wp-content/uploads/2014/06/GPlusAdapterOptions.png" alt="GPlusAdapterOptions" width="600" height="564" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/GPlusAdapterOptions.png 600w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/GPlusAdapterOptions-300x282.png 300w" sizes="(max-width: 600px) 100vw, 600px" /></div>
+<div style="color: #000000;"></div>
+<div style="color: #000000;"> Now, you need to create alarm condition to match alarm codes as below</div>
+<div style="color: #000000;">
+<div>
+<p>In Genesys Administrator, you can create a new Alarm Condition:</p>
+<ol>
+<li>Go to Provisioning &gt; Environment &gt; Alarm Conditions.</li>
+<li>If required, navigate to the folder in which you want to store the new Alarm Condition.</li>
+<li>Click  <a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/NewAC.png"><img class="alignnone wp-image-2431 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/NewAC.png" alt="NewAC" width="59" height="20" /></a></li>
+<li>On the Configuration tab, enter or modify information as required.</li>
+<li>On the Options tab, enter or modify information as required.</li>
+<li>To save the new Alarm Condition and register it in the Configuration Database, do one of the following:
+<ul>
+<li>Click   <a href="/wp-content/uploads/2014/06/SaveAC.png"><img class="alignnone wp-image-2441" src="/wp-content/uploads/2014/06/SaveAC.png" alt="SaveAC" width="49" height="20" /></a>to continue configuring the Alarm Condition.</li>
+</ul>
+</li>
+</ol>
+<div>In the screenshot below, I created &#8216;diskWriteFailure&#8217; alarm with log event Id as 9001 and cancel log event id as 9002. You can fine tune this by setting &#8216;Detect Selection Mode&#8217; to &#8216;Select by Application&#8217; and selecting &#8216;GPlusAdapter&#8217; application in &#8216;Detect Application&#8217;.</div>
+</div>
+<div></div>
+<div>Two main items to note here</div>
+<div>
+<ul>
+<li>9001 &#8211; I selected 90XX number series to configure custom alarms as other series are used by other components</li>
+<li>9002 &#8211; Another custom alarm configured for &#8216;diskWriteSuccess&#8217;</li>
+</ul>
+</div>
+<div><img class="aligncenter size-full wp-image-2481" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Alarm-Condition1.png" alt="Alarm Condition" width="808" height="435" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Alarm-Condition1.png 808w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Alarm-Condition1-300x162.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Alarm-Condition1-768x413.png 768w" sizes="(max-width: 808px) 100vw, 808px" /></div>
+<div></div>
+<div>By following above steps, you can configure alarm conditions and assign reaction scripts to get notifications <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></div>
+<p>&nbsp;</p>
+</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/06/18/how-to-configure-alarm-conditions-for-gplus-adapter/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Debugging VoiceXML applications using Composer</title>
+		<link>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/</link>
+					<comments>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 04 Jun 2014 12:14:38 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[Composer]]></category>
+		<category><![CDATA[GVP]]></category>
+		<category><![CDATA[Tips]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2191</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Do you know that you can debug voicexml applications using Genesys composer? Composer debugger is integrated with GVP to make test calls, trace calls and debug applications.</p>
+<h3><strong>Setup your debug session</strong></h3>
+<hr />
+<p>First you need to setup GVP debugger and then launch configuration. Please follow the steps below to setup GVP debugger</p>
+<ol>
+<li>Select <strong>Window</strong> &gt; <strong>Preferences</strong>, then expand <strong>Composer</strong> and select <strong>Debugging</strong>.</li>
+<li>Specify the following settings
+<ul>
+<li><strong>Network Interface</strong>. Composer debugging uses this setting to make the socket connection for the Debugger control channel. If you have multiple NIC cards of multiple networks (such as Wireless and LAN) select the interface on which GVP will communicate to your desktop.</li>
+</ul>
+</li>
+<li>Select GVP Debugger and specify:</li>
+</ol>
+<ul>
+<ul>
+<li><strong style="font-style: normal;">SIP Phone User Name</strong>.  This is the user name or phone number of your SIP Phone.</li>
+<li><strong style="font-style: normal;">SIP Phone Hostname/IP</strong>.  This is the IP address on which your SIP phone is running. Again, if you have multiple NIC cards or interfaces, make sure you specify the same IP address as corresponds to the Network Interface selected above.</li>
+<li><strong style="font-style: normal;">SIP Phone Port</strong>.  This is the port on which your SIP phone is running.</li>
+<li><strong style="font-style: normal;">Platform IP</strong>.  This is the IP address of your GVP Server.</li>
+<li><strong style="font-style: normal;">Platform</strong><strong style="font-style: normal;"> Port.</strong>  Resource Manager Port Number.</li>
+</ul>
+</ul>
+<p style="padding-left: 60px;">To create debug launch configuration, follow the steps below</p>
+<p> In the Project Explorer, expand the Composer Project and its callflows subfolder.</p>
+<ol>
+<li>Right-click on the callflow filename in the Project Explorer and select<strong>Debug as</strong> &gt; <strong>Debug Configurations</strong>.</li>
+<li>Expand <strong>Composer</strong> &#8211; <strong>GVP Debugger</strong>.</li>
+<li>Select <strong>New Configuration</strong>. The Debug Configurations dialog box opens.<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png"><img class="aligncenter wp-image-2271 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png" alt="Debug Configuration" width="798" height="642" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration.png 798w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration-300x241.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Configuration-768x618.png 768w" sizes="(max-width: 798px) 100vw, 798px" /></a></li>
+<li>Name the configuration.</li>
+<li>Click the Create Automatically button to create a new project folder to save the metric traces and VXML pages as the calls are being executed. This folder appears in the Location field. Please note that there is currently no automatic cleanup so the number of files can become large. Clean up the debugging results by deleting the gvp-debug.&lt;timestamp&gt; folders from the Project Explorer. Each gvp-debug.&lt;timestamp&gt; folder corresponds to a single debug call that was made at the time specified by the timestamp.<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png"><img class="aligncenter size-full wp-image-2221" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png" alt="DebugConfig1" width="691" height="512" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1.png 691w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/DebugConfig1-300x222.png 300w" sizes="(max-width: 691px) 100vw, 691px" /></a></li>
+<li>Click the SIP Phone Settings tab and provide your SIP Phone information if not already there from GVP Debugger Preferences<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png"><img class="aligncenter wp-image-2301 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png" alt="Debug SIP" width="1197" height="638" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP.png 1197w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-300x160.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-1024x546.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-SIP-768x409.png 768w" sizes="(max-width: 1197px) 100vw, 1197px" /></a></li>
+<li>Click the <strong>Application Settings</strong> tab and select <strong>Callflow Diagram<a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png"><img class="aligncenter wp-image-2251 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png" alt="Debug App Options" width="1196" height="638" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options.png 1196w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-300x160.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-1024x546.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-App-Options-768x410.png 768w" sizes="(max-width: 1196px) 100vw, 1196px" /></a></strong></li>
+<li>Input variables in a callflow diagram can be initialized in a Debuggercall using the Extra Parameters field in the Debug Configurations &gt;Application Settings tab. The Parameter names should match the &#8220;Input&#8221; variable defined in the <a href="http://docs.genesys.com/Documentation/Composer/8.1.3/Help/EntryBlock#Variables_Property">Entry Block</a> of the Callflow diagram.</li>
+<li>Click <strong>Apply</strong>.</li>
+<li>Click <strong>Debug</strong>. This will automatically dial out your SIP Phone.</li>
+<li>Accept the call and you will be connected to the application on GVP. Composer switches to the GVP Debugging perspective.</li>
+</ol>
+<h3><strong>How do you start debugging your application?</strong></h3>
+<hr />
+<p>Alternatively, once it is setup, you can start a debugging session in the following ways:</p>
+<ul>
+<li>Right-click on the diagram/VXML file and Select <strong>Debug As</strong> &gt; <strong>Debug Callflow</strong>.</li>
+<li>On the main toolbar, there is a Debug button <img class="alignnone" src="http://docs.genesys.com/images/7/71/CVDebugbutton.gif" alt="" width="38" height="23" />. Clicking this button launches the most recently used debug configuration. You can also use the keyboard shortcuts F11 (for Debug).</li>
+</ul>
+<p>Once the call is initiated, you will see a red box around the block, which indicates where the call is currently paused.</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png"><img class="aligncenter size-full wp-image-2291" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png" alt="Debug Perspective" width="1592" height="757" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective.png 1592w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-300x143.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1024x487.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-768x365.png 768w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1536x730.png 1536w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Debug-Perspective-1200x571.png 1200w" sizes="(max-width: 1592px) 100vw, 1592px" /></a></p>
+<p>&nbsp;</p>
+<p><strong>1 &#8211; Debug View.</strong> This view <span style="color: #000000;">shows the name of the callflow or workflow diagram being debugged, as well as the status of the debug progress or result</span></p>
+<p><strong>2 &#8211; Variables</strong>. <span style="color: #000000;">The Variables view displays information about the variables associated with the stack frame selected in the Debug view</span></p>
+<p><strong>3 &#8211; CallFlow.</strong> Call flow diagram will be display if you are debugging call flow. Active block will be surrounded by Red box</p>
+<p><strong>4 &#8211; Call Trace Window.</strong>  Call traces will be visible at this window</p>
+<p><strong>5 &#8211; Expressions</strong>. <span style="color: #000000;">Use the Expressions view to inspect data from a stack frame of a suspended thread, and other places</span></p>
+<p>Click the step over  button  <img class="alignnone" src="http://docs.genesys.com/images/3/3a/CVDebugTabStepOver.gif" alt="" width="27" height="24" />on ‘Debug’ view to single step through the blocks. When stepping t through call flow diagram call traces will become visible in the call trace window</p>
+<p>&nbsp;</p>
+<p>Also, you can watch and change variable values during debugging session. This will be useful if you want to test different scenarios.</p>
+<p>To change value, expand the variable, right click and select ‘<strong>Change value’</strong>. Specify new value and click ‘Ok’ to proceed with your debug session.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>In the application settings (Step 8), you can specify DNIS to verify GVP Profiles are configured correctly.</li>
+<li>Similarly, you can specify application URL path to verify that application is deployed correctly to the web server and URL is accessible</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/06/04/debugging-voicexml-applications-using-composer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Virtual Queues and Clear Target Option</title>
+		<link>http://localhost/lakshmikanth/2014/05/13/virtual-queues-and-clear-target-option/</link>
+					<comments>http://localhost/lakshmikanth/2014/05/13/virtual-queues-and-clear-target-option/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 13 May 2014 10:41:45 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Reporting]]></category>
+		<category><![CDATA[Routing]]></category>
+		<category><![CDATA[Universal Routing]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Virtual Queue]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2041</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In this post, we will see what clear target option is and how it impacts call routing and reporting.</p>
+<p><strong>What is Clear target?<br />
+</strong></p>
+<p>Clear target sets whether the targets are retained after the interaction moves on through the strategy and encounters other selection objects. If &#8216;Clear Target&#8217; is not selected, targets in this selection object are added to those of the next selection object.</p>
+<p>For example, in the strategy below first selection object waits for &#8216;Sales&#8217; agent group for 5 seconds and moves on to &#8216;General&#8217; agent group for 300 seconds.</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/05/051314_1041_VirtualQueu1.png"><img class="aligncenter wp-image-2031 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/05/051314_1041_VirtualQueu1.png" alt="051314_1041_VirtualQueu1.png" width="793" height="493" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/05/051314_1041_VirtualQueu1.png 793w, http://localhost/lakshmikanth/wp-content/uploads/2014/05/051314_1041_VirtualQueu1-300x187.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/05/051314_1041_VirtualQueu1-768x477.png 768w" sizes="(max-width: 793px) 100vw, 793px" /></a></p>
+<ul>
+<li>Agent Group &#8216;Sales&#8217; contains following agents – sales1, sales2, sales3 and uses virtual queue <strong>&#8216;VQ_Sales&#8217;</strong></li>
+<li>Agent Group &#8216;General&#8217; contains following agents &#8211; agent1, agent2, agent3 and uses virtual queue <strong>&#8216;VQ_General&#8217;</strong></li>
+</ul>
+<h3>Scenario 1: Clear Target is checked</h3>
+<p>In this case, if &#8216;Sales&#8217; agents are not available, strategy will move on to next selection object and target &#8216;General&#8217; agent group only.</p>
+<p>Routing Target is now only following agents</p>
+<ul>
+<li>agent1</li>
+<li>agent2</li>
+<li>agent3</li>
+</ul>
+<p>After it is moved on, calls will not be routed to &#8216;Sales&#8217; agent even if they become available. In some cases, it is useful as calls are overflowing to &#8216;General&#8217; agent group as &#8216;Sales&#8217; agents are busy and they need breathing space.</p>
+<h3>Scenario 2: Clear Target is unchecked</h3>
+<p>In this case, if &#8216;Sales&#8217; agents are not available, strategy will move on next selection object and<span style="text-decoration: underline;"> adds &#8216;General&#8217; agent group in the existing target list.<br />
+</span></p>
+<p>Routing target is now &#8216;Sales&#8217; + &#8216;General&#8217; agent group as below</p>
+<ul>
+<li>sales1</li>
+<li>sales2</li>
+<li>sales3</li>
+<li>agent1</li>
+<li>agent2</li>
+<li>agent3</li>
+</ul>
+<p>This is useful when you want best skilled agent to handle customer calls but don&#8217;t want your customer to wait forever.</p>
+<p>Now, we understand how clear target works, we will see how it impacts reporting.</p>
+<h3>How it impacts reporting?</h3>
+<p>In my previous post, we saw how virtual queues work? and how events are distributed. When calls enters virtual queue, it can follow any of the options below</p>
+<ul>
+<li>Diverted – Call routed to target (agent) successfully</li>
+<li>Abandoned – Customer hang up call</li>
+<li>Cleared – Call is cleared from this virtual queue. If the interaction leaves virtual queue with <strong><em>EventDiverted </em></strong>with the call state redirected (<strong><em>AttributeCallState = 22</em></strong>), it is considered as cleared.</li>
+</ul>
+<p>Simply,</p>
+<div>
+<table style="border-collapse: collapse;" border="0">
+<colgroup>
+<col style="width: 436px;" /></colgroup>
+<tbody valign="top">
+<tr style="height: 28px;">
+<td style="padding-left: 0px; padding-right: 0px; border: solid 1pt;"><strong>       Calls Entered</strong> = <strong>Diverted + Abandoned + Cleared<br />
+</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let&#8217;s go through some call flow scenarios from reporting perspective</p>
+<h3>Scenario 1: Clear Target is checked, Sales agent are available and call routed to Sales agent</h3>
+<p>In this case, reports are calculated as below</p>
+<p>[table id=2 /]</p>
+<h3>Scenario 2: Clear Target is checked, Sales agent are unavailable and after 5 seconds – timeout expires for first selection object, call routed to General agent</h3>
+<p>In this case, reports are calculated as below</p>
+<p>[table id=3 /]</p>
+<h3>Scenario 3: Clear Target is unchecked, Sales agent are unavailable, after 5 seconds, call queued for both queues and routed to General agent</h3>
+<p>In this case, reports are calculated as below</p>
+<p>[table id=3 /]</p>
+<h3>Scenario 4: Clear Target is checked, both Sales and General agents are unavailable after 5 seconds – timeout expires for first selection object, call queued for both agent groups and call routed to &#8216;Sales&#8217; agent</h3>
+<p>In this case, reports are calculated as below</p>
+<p>[table id=4/]		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/05/13/virtual-queues-and-clear-target-option/feed/</wfw:commentRss>
+			<slash:comments>5</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

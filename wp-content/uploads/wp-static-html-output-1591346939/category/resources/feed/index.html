@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Resources &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/resources/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Fri, 16 Mar 2012 11:42:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>How to find Datasource from Connection String?</title>
+		<link>http://localhost/lakshmikanth/2012/03/16/how-to-find-datasource-from-connection-string/</link>
+					<comments>http://localhost/lakshmikanth/2012/03/16/how-to-find-datasource-from-connection-string/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 16 Mar 2012 11:42:00 +0000</pubDate>
+				<category><![CDATA[C#]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=331</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Recently, I stumbled upon request to show data source property from Connection String to the end user. While, we can always split and parse the values, I was wondering about easy options for this and found &#8216;OledbConnectionStringBuilder&#8217; class (Similar class available for SQL too)</p>
+<p>To find Connection String parameters, just use it one of its method as below</p>
+<p><span><em>return new OledbConnectionStringBuilder(ConnectionString).DataSource</em><em>;</em></span></p>
+<p>Simple and effective way to get the value..		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/03/16/how-to-find-datasource-from-connection-string/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>&#8220;HTTP Error 404 &#8211; File or Directory not found&#8221; error message when you request dynamic content with IIS 6.0</title>
+		<link>http://localhost/lakshmikanth/2010/08/05/http-error-404-file-or-directory-not-found-error-message-when-you-request-dynamic-content-with-iis-6-0/</link>
+					<comments>http://localhost/lakshmikanth/2010/08/05/http-error-404-file-or-directory-not-found-error-message-when-you-request-dynamic-content-with-iis-6-0/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 05 Aug 2010 16:06:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[IIS]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=461</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>To permit IIS to serve dynamic content, the administrator must unlock this content in the Web service extensions node in IIS Manager. To do this, the administrator must either enable a pre-existing Web service extension or add a new Web service extension.</p>
+<p><b>Enable a Pre-existing Web Service Extension in IIS 6.0 </b>    </p>
+<p>To permit IIS to serve content that requires a specific ISAPI or CGI extension that is already listed in the Web service extensions list, follow these steps: </p>
+<ol>
+<li>Open IIS Manager, expand the master server node (that is, the <var>Servername</var> node), and then select the <strong>Web service extensions</strong> node. </li>
+<li>In the right pane of IIS Manager, right-click the extension that you want to enable. In this example, this is <strong>Active Server Pages</strong>. </li>
+<li>Click to select the <strong>Allow</strong> check box. </li>
+</ol>
+<p><b>Add a New Web Service Extension to IIS 6.0</b>    </p>
+<p>To permit IIS to serve content that requires a specific ISAPI or CGI extension that is not already listed in the Web service extensions list, follow these steps: </p>
+<ol>
+<li>Open IIS Manager, expand the master server node, and then select the <strong>Web service extensions</strong> node. </li>
+<li>In the right pane of the IIS Manager, click <strong>Add a new Web service extension</strong> under <strong>Tasks</strong>. </li>
+<li>In the <strong>Extension name</strong> box, type a friendly name for the extension that you want to add (for example, FrontPage Server Extensions). </li>
+<li>In the <strong>Required files</strong> box, click <strong>Add</strong>, and then select the path and the name of the file that will handle requests for the specific extension. After you select the path and the file name, click <strong>OK</strong>. </li>
+<li>If the extension must be enabled immediately, click to select the <strong>Set extension status to allowed</strong> check box. </li>
+<li>Click <strong>OK</strong> to save your changes. </li>
+</ol>
+<p>For more information, please refer to <a title="http://support.microsoft.com/kb/315122" href="http://support.microsoft.com/kb/315122">http://support.microsoft.com/kb/315122</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/08/05/http-error-404-file-or-directory-not-found-error-message-when-you-request-dynamic-content-with-iis-6-0/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to view line numbers in VB.NET</title>
+		<link>http://localhost/lakshmikanth/2010/06/29/how-to-view-line-numbers-in-vb-net/</link>
+					<comments>http://localhost/lakshmikanth/2010/06/29/how-to-view-line-numbers-in-vb-net/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 29 Jun 2010 10:02:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[VB.NET]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=471</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Remember line numbers ??? Long time ago, they were used to branch them with a ‘Go To’ statement. And it is still available with Visual Studio 2008 and pretty useful for error handling too…</p>
+<p>For example, a lot of error messages give you specific line numbers in your code to use to find the errors. Trying to count down the page manually can be pretty tedious.</p>
+<p>To enable line numbers, go to </p>
+<p><b>Tools</b> menu item > <b>Options</b> > <b>Text Editor</b> > <b>Basic</b> > <b>General</b></p>
+<p>Click the checkbox in front of &#8220;Line Numbers&#8221;. It should do it…</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/06/29/how-to-view-line-numbers-in-vb-net/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Stopping a form closing using vb.net</title>
+		<link>http://localhost/lakshmikanth/2010/06/25/stopping-a-form-closing-using-vb-net/</link>
+					<comments>http://localhost/lakshmikanth/2010/06/25/stopping-a-form-closing-using-vb-net/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 25 Jun 2010 16:33:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[VB.NET]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=481</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Quick and useful tip..</p>
+<p> </p>
+<p>Private Sub MyForm_Closing(ByVal sender As System.Object, ByVal e As _      <br />            System.ComponentModel.CancelEventArgs) Handles MyBase.Closing       <br /> Try       <br />   Select Case MessageBox.Show(&#8220;Are you sure you want to close this window?&#8221;, _       <br />      &#8220;Your application&#8221;, MessageBoxButtons.YesNo, MessageBoxIcon.Question)       <br />    Case MsgBoxResult.Yes       <br />     &#8216;Do Nothing       <br />    Case MsgBoxResult.No       <br />     e.Cancel = True       <br />   End Select       <br /> Catch ee As Exception       <br />  Throw ee       <br /> End Try       <br />End Sub</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/06/25/stopping-a-form-closing-using-vb-net/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Iterating through a Dictionary Object&#8217;s Items in VB.NET</title>
+		<link>http://localhost/lakshmikanth/2010/06/24/iterating-through-a-dictionary-objects-items-in-vb-net/</link>
+					<comments>http://localhost/lakshmikanth/2010/06/24/iterating-through-a-dictionary-objects-items-in-vb-net/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 24 Jun 2010 14:41:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[VB.NET]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=501</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Good example for iterating through dictionary object…</p>
+<blockquote>
+<p>Dim DictObj As New Dictionary(Of Integer, String)  </p>
+<p>DictObj.Add(1, &#8220;ABC&#8221;)  </p>
+<p>DictObj.Add(2, &#8220;DEF&#8221;)  </p>
+<p>DictObj.Add(3, &#8220;GHI&#8221;)  </p>
+<p>DictObj.Add(4, &#8220;JKL&#8221;)  </p>
+<p>For Each kvp As KeyValuePair(Of Integer, String) In DictObj  </p>
+<p>Dim v1 As Integer = kvp.Key  </p>
+<p>Dim v2 As String = kvp.Value  </p>
+<p>     Debug.WriteLine(&#8220;Key: &#8221; + v1.ToString _  </p>
+<p>            + &#8221; Value: &#8221; + v2)  </p>
+<p>Next</p>
+</blockquote>
+<p>For more information, please refer to <a title="http://msdn.microsoft.com/en-us/library/xfhwa508.aspx" href="http://msdn.microsoft.com/en-us/library/xfhwa508.aspx">http://msdn.microsoft.com/en-us/library/xfhwa508.aspx</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/06/24/iterating-through-a-dictionary-objects-items-in-vb-net/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Simulate Keystrokes using Win32 API (SendInput)?</title>
+		<link>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/</link>
+					<comments>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 03 Feb 2010 21:59:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[VB6]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=551</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Recently, I was modifying the old softphone source code (written in VB6) and encountered error using ‘SendKeys’ function. Sometimes, it sends multiple keystrokes for the same char resulting in application errors. Thought of using WinAPI’s to simulate keystrokes and got this one..works really well…</p>
+<p> </p>
+<p><em>Const KEYEVENTF_KEYUP = &#038;H2      <br />Const INPUT_MOUSE = 0       <br />Const INPUT_KEYBOARD = 1       <br />Const INPUT_HARDWARE = 2       <br />Private Type MOUSEINPUT       <br />    dx As Long       <br />    dy As Long       <br />    mouseData As Long       <br />    dwFlags As Long       <br />    time As Long       <br />    dwExtraInfo As Long       <br />End Type       <br />Private Type KEYBDINPUT       <br />    wVk As Integer       <br />    wScan As Integer       <br />    dwFlags As Long       <br />    time As Long       <br />    dwExtraInfo As Long       <br />End Type </em></p>
+<p><em>Private Type HARDWAREINPUT      <br />    uMsg As Long       <br />    wParamL As Integer       <br />    wParamH As Integer       <br />End Type </em></p>
+<p><em>Private Type GENERALINPUT      <br />    dwType As Long       <br />    xi(0 To 23) As Byte       <br />End Type </em></p>
+<p><em>Private Declare Function SendInput Lib &#8220;user32.dll&#8221; (ByVal nInputs As Long, pInputs As GENERALINPUT, ByVal cbSize As Long) As Long      <br />Private Declare Sub CopyMemory Lib &#8220;kernel32&#8221; Alias &#8220;RtlMoveMemory&#8221; (pDst As Any, pSrc As Any, ByVal ByteLen As Long)</em></p>
+<p><em></em></p>
+<p><em>Private Sub SendKey(bKey As Byte) </em></p>
+<p><em>Dim GInput(0 To 1) As GENERALINPUT      <br />Dim KInput As KEYBDINPUT       <br />       </em></p>
+<p><em>       KInput.wVk = bKey </em><em>&#8216;the key we&#8217;re going to press        <br />       KInput.dwFlags = 0 &#8216;press the key </em></p>
+<p><em>       &#8216;copy the structure into the input array &#8216;s buffer.       <br />       GInput(0).dwType = INPUT_KEYBOARD &#8216; keyboard input       <br />       CopyMemory GInput(0).xi(0), KInput, Len(KInput) </em></p>
+<p><em>&#8216;do the same as above, but for releasing &#8216; the key </em></p>
+<p><em>        KInput.wVk = bKey &#8216; the key we&#8217;re going to realease       <br />        KInput.dwFlags = KEYEVENTF_KEYUP &#8216; release the key       <br />        GInput(1).dwType = INPUT_KEYBOARD </em><em>&#8216; keyboard input        <br />       CopyMemory GInput(1).xi(0), KInput, Len(KInput)       <br />        </em><em>&#8216;send the input now        <br />        Call SendInput(2, GInput(0), Len(GInput(0)))       <br />End Sub</em></p>
+<p>To simulate “H” Keystroke, just call<strong> SendKey(CByte(asc(“H”))</strong></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to multiple selected items from List Box (VB6)?</title>
+		<link>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 03 Feb 2010 21:50:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[VB6]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=561</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Ever wondered how to remove multiple selected items from list box in VB6? Trick here is loop through listbox in REVERSE.</p>
+<p>Here is the sample and enjoy <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><em>Dim intCount As Integer</em></p>
+<p><em>For intCount = (lstSample.ListCount -1 1) To 0 Step -1</em></p>
+<blockquote>
+<p><em>If lstSample.Selected(intCount) Then</em></p>
+</blockquote>
+<blockquote>
+<p><em>lstSample.RemoveItem intCount</em></p>
+</blockquote>
+<p><em>End If</em></p>
+<p><em>Next</em></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Add or Remove line numbers in Word Document</title>
+		<link>http://localhost/lakshmikanth/2009/10/12/add-or-remove-line-numbers-in-word-document/</link>
+					<comments>http://localhost/lakshmikanth/2009/10/12/add-or-remove-line-numbers-in-word-document/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2009 09:56:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Microsoft Word]]></category>
+		<category><![CDATA[Office 2007]]></category>
+		<category><![CDATA[Resources]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=611</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>When I was preparing design document using templates, I found that having line number was useful, especially for review.</p>
+<p>Struggled a bit to set this using Office 2007, used Microsoft help to get these details…:-)</p>
+<ol>
+<li>On the <b>Page Layout</b> tab, in the <b>Page Setup</b> group, click <b>Line Numbers</b>.
+<p><img border="0" alt="Word Ribbon Image" src="http://office.microsoft.com/global/images/default.aspx?AssetID=ZA101539261033"></p>
+<p><b> Note </b>  If your document is divided into sections and you want to add line numbers to the entire document, you first need to select the document. Click <b>Select</b> in the <b>Editing</b> group on the <b>Home</b> tab, and then click <b>Select All</b>. Or press CTRL+A.</p>
+</li>
+<li>Do one of the following:
+<ul>
+<li>To number consecutively throughout the document, click <b>Continuous</b>. </li>
+<li>To start with number 1 on each page, click <b>Restart Each Page</b>. </li>
+<li>To start with number 1 after each section break, click <b>Restart Each Section</b>.</li>
+</ul>
+</li>
+</ol>
+<h4>Remove line numbers</h4>
+<p>You can remove line numbers from the entire document, from a section, or from a paragraph.</p>
+<ol>
+<li>Click in the document, or click in the section or paragraph from which you want to remove line numbers. If you want to remove line numbers from multiple sections, select the sections. </li>
+<li>On the <b>Page Layout</b> tab, in the <b>Page Setup</b> group, click <b>Line Numbers</b>.
+<p><img border="0" alt="Word Ribbon Image" src="http://office.microsoft.com/global/images/default.aspx?AssetID=ZA101539261033"></p>
+</li>
+<li>Do one of the following:
+<ul>
+<li>To remove line numbers from the entire document or section, click <b>None</b>. </li>
+<li>To remove line numbers from a single paragraph, click <b>Suppress for Current Paragraph</b>.</li>
+</ul>
+</li>
+</ol>
+<p>Reference: <a title="http://office.microsoft.com/en-us/word/HP012292791033.aspx" href="http://office.microsoft.com/en-us/word/HP012292791033.aspx">http://office.microsoft.com/en-us/word/HP012292791033.aspx</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/10/12/add-or-remove-line-numbers-in-word-document/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

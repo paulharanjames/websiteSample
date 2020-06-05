@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Windows Batch &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/windows-batch/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 09 Apr 2014 07:59:27 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Batch file to delete files older than X days</title>
+		<link>http://localhost/lakshmikanth/2014/04/09/batch-file-to-delete-files-older-than-x-days/</link>
+					<comments>http://localhost/lakshmikanth/2014/04/09/batch-file-to-delete-files-older-than-x-days/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 09 Apr 2014 07:59:27 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Windows Batch]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=1711</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Quite often, we have an requirement to delete old log files and used powershell scripting in my previous project. With this customer, they are still with Windows 2003 and have to use batch file to achieve the same.</p>
+<div>
+<span style="color: #339966;"><code>FORFILES /p "E:\logs" /s /m *.* /d -3 /c "cmd /c if not @isdir==TRUE del @file"<br />
+</code></span></p>
+<ul>
+<li><span style="color: #333333; font-family: TitilliumText22LRegular, Arial, sans-serif; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 1.6em;"> Change &#8216;E:\Logs&#8217; to the directory which you are saving files</span></li>
+<li>/d -3  indicates than files older than 3 days and change it, if required</li>
+<li>if not @isdir == TRUE &#8211; If you have sub directories, it will skip sub directories and only delete files. Otherwise, script will delete sub directories even if you have only one day old file in the sub directory as sub directory last modified data will be greater than 3 days</li>
+</ul>
+</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/04/09/batch-file-to-delete-files-older-than-x-days/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to generate file name with timestamp in windows batch file?</title>
+		<link>http://localhost/lakshmikanth/2014/04/08/how-to-generate-file-name-with-timestamp-in-windows-batch-file/</link>
+					<comments>http://localhost/lakshmikanth/2014/04/08/how-to-generate-file-name-with-timestamp-in-windows-batch-file/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 08 Apr 2014 13:39:43 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Scripting]]></category>
+		<category><![CDATA[Timestamp]]></category>
+		<category><![CDATA[Windows Batch]]></category>
+		<guid isPermaLink="false">https://lakshmikanth.azurewebsites.net/?p=1501</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				<span id="lnum1" style="color: #606060;"><span style="font-size: small;"><span style="font-family: Verdana;">Recently, we had requirement to generate unique file name to transfer data to another DC in an encrypted format from Windows 2003 server. As a POC and to keep costs down, we decided to use windows batch file scripting to do this. We suffixed data file name with timestamp to make it unique as below</span></span></span></p>
+<p><span style="color: #339966;">set local<br />
+REM Preparing Timestamp Information<br />
+set year=%date:~6,4%<br />
+set month=%date:~3,2%<br />
+set day=%date:~0,2%<br />
+set hour=%time:~0,2%<br />
+set minute=%time:~3,2%<br />
+set seconds=%time:~6,2%<br />
+set timestamp=%year%%month%%day%%hour%%minute%%seconds%<br />
+set data_file=C:\%timestamp%.txt</span></p>
+<p><span style="font-family: Verdana;">However, above script failed to generate file if hour is less than 10 as it returns ‘ 8’ for example with leading space and Windows 2003 rejects file name with space. Fortunately, it is easy to fix by checking hour field and replacing space with 0 as below</span></p>
+<p><span style="color: #339966;"><br />
+set local<br />
+REM Preparing Timestamp Information<br />
+set year=%date:~6,4%<br />
+set month=%date:~3,2%<br />
+set day=%date:~0,2%<br />
+set hour=%time:~0,2%<br />
+<b>REM Replace leading space with zero<br />
+if &#8220;%hour:~0,1%&#8221; ==&#8221; &#8221; set hour=0%hour:~1,1%</b><br />
+set minute=%time:~3,2%<br />
+set seconds=%time:~6,2%<br />
+set timestamp=%year%%month%%day%%hour%%minute%%seconds%<br />
+set data_file=C:\%timestamp%.txt<br />
+</span>		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/04/08/how-to-generate-file-name-with-timestamp-in-windows-batch-file/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

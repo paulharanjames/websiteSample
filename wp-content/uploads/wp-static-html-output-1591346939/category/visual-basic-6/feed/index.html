@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Visual Basic 6 &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/visual-basic-6/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 03 Feb 2010 21:59:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Simulate Keystrokes using Win32 API (SendInput)?</title>
+		<link>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/</link>
+					<comments>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 03 Feb 2010 21:59:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[VB6]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=551</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Recently, I was modifying the old softphone source code (written in VB6) and encountered error using ‘SendKeys’ function. Sometimes, it sends multiple keystrokes for the same char resulting in application errors. Thought of using WinAPI’s to simulate keystrokes and got this one..works really well…</p>
+<p> </p>
+<p><em>Const KEYEVENTF_KEYUP = &#038;H2      <br />Const INPUT_MOUSE = 0       <br />Const INPUT_KEYBOARD = 1       <br />Const INPUT_HARDWARE = 2       <br />Private Type MOUSEINPUT       <br />    dx As Long       <br />    dy As Long       <br />    mouseData As Long       <br />    dwFlags As Long       <br />    time As Long       <br />    dwExtraInfo As Long       <br />End Type       <br />Private Type KEYBDINPUT       <br />    wVk As Integer       <br />    wScan As Integer       <br />    dwFlags As Long       <br />    time As Long       <br />    dwExtraInfo As Long       <br />End Type </em></p>
+<p><em>Private Type HARDWAREINPUT      <br />    uMsg As Long       <br />    wParamL As Integer       <br />    wParamH As Integer       <br />End Type </em></p>
+<p><em>Private Type GENERALINPUT      <br />    dwType As Long       <br />    xi(0 To 23) As Byte       <br />End Type </em></p>
+<p><em>Private Declare Function SendInput Lib &#8220;user32.dll&#8221; (ByVal nInputs As Long, pInputs As GENERALINPUT, ByVal cbSize As Long) As Long      <br />Private Declare Sub CopyMemory Lib &#8220;kernel32&#8221; Alias &#8220;RtlMoveMemory&#8221; (pDst As Any, pSrc As Any, ByVal ByteLen As Long)</em></p>
+<p><em></em></p>
+<p><em>Private Sub SendKey(bKey As Byte) </em></p>
+<p><em>Dim GInput(0 To 1) As GENERALINPUT      <br />Dim KInput As KEYBDINPUT       <br />       </em></p>
+<p><em>       KInput.wVk = bKey </em><em>&#8216;the key we&#8217;re going to press        <br />       KInput.dwFlags = 0 &#8216;press the key </em></p>
+<p><em>       &#8216;copy the structure into the input array &#8216;s buffer.       <br />       GInput(0).dwType = INPUT_KEYBOARD &#8216; keyboard input       <br />       CopyMemory GInput(0).xi(0), KInput, Len(KInput) </em></p>
+<p><em>&#8216;do the same as above, but for releasing &#8216; the key </em></p>
+<p><em>        KInput.wVk = bKey &#8216; the key we&#8217;re going to realease       <br />        KInput.dwFlags = KEYEVENTF_KEYUP &#8216; release the key       <br />        GInput(1).dwType = INPUT_KEYBOARD </em><em>&#8216; keyboard input        <br />       CopyMemory GInput(1).xi(0), KInput, Len(KInput)       <br />        </em><em>&#8216;send the input now        <br />        Call SendInput(2, GInput(0), Len(GInput(0)))       <br />End Sub</em></p>
+<p>To simulate “H” Keystroke, just call<strong> SendKey(CByte(asc(“H”))</strong></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/02/03/simulate-keystrokes-using-win32-api-sendinput/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to multiple selected items from List Box (VB6)?</title>
+		<link>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 03 Feb 2010 21:50:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Resources]]></category>
+		<category><![CDATA[VB6]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=561</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Ever wondered how to remove multiple selected items from list box in VB6? Trick here is loop through listbox in REVERSE.</p>
+<p>Here is the sample and enjoy <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><em>Dim intCount As Integer</em></p>
+<p><em>For intCount = (lstSample.ListCount -1 1) To 0 Step -1</em></p>
+<blockquote>
+<p><em>If lstSample.Selected(intCount) Then</em></p>
+</blockquote>
+<blockquote>
+<p><em>lstSample.RemoveItem intCount</em></p>
+</blockquote>
+<p><em>End If</em></p>
+<p><em>Next</em></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/02/03/how-to-multiple-selected-items-from-list-box-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Delete Old log files using VB6</title>
+		<link>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2009 11:05:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Logging]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=641</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>VB6 Snippet to delete old log files</p>
+<p>Private Sub deleteOldFiles() </p>
+<p>Dim sFileName As String   <br />Dim sFileSplit() As String    <br />Dim sFileSpec As String    <br />Dim sDir As String    <br />Dim iCount As Integer    <br />Dim iCtr As Integer    <br />Dim dCompDate As Date    <br />Dim dFileDate As Date </p>
+<p>On Error GoTo errHandler </p>
+<p>sFileSpec = App.Path &#038; &#8220;\logs\*.log&#8221;   <br />sFileName = Dir(sFileSpec) </p>
+<p>dCompDate = Format(Now, &#8220;mm/dd/yyyy&#8221;) </p>
+<p>Do   <br />    If sFileName = &#8220;&#8221; Then Exit Do    <br />        If InStr(sFileSpec, &#8220;\&#8221;) > 0 Then    <br />            sFileSplit = Split(sFileSpec, &#8220;\&#8221;)    <br />            iCount = UBound(sFileSplit) &#8211; 1    <br />                For iCtr = 0 To iCount    <br />                    sDir = sDir &#038; sFileSplit(iCtr) &#038; &#8220;\&#8221;    <br />                Next    <br />            sFileName = sDir &#038; sFileName    <br />        End If    <br />        dFileDate = Format(FileDateTime(sFileName), &#8220;mm/dd/yyyy&#8221;)    <br />        If DateDiff(&#8220;d&#8221;, dFileDate, dCompDate) >= 3 Then    <br />         &#8216;Get File Attributes    <br />          If GetAttr(sFileName) = 33 Then    <br />             SetAttr sFileName, 32    <br />          End If    <br />         Kill sFileName    <br />        End If    <br />    sFileName = Dir    <br />    sDir = &#8220;&#8221;    <br />Loop </p>
+<p>Exit Sub </p>
+<p>errHandler: </p>
+<p> MsgBox Err.Number &#038; &#8220;:&#8221; &#038; Err.Description </p>
+<p>End Sub</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/09/18/delete-old-log-files-using-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Write log using VB6</title>
+		<link>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/</link>
+					<comments>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2009 11:03:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Logging]]></category>
+		<category><![CDATA[Visual Basic 6]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=651</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>Function to write log file using Visual Basic 6</p>
+<p>Private Sub writeLog(strMessage As String) </p>
+<p>Dim hFile As Long   <br />Dim sFolder As String    <br />Dim sFile As String    <br />Dim sDestination As String    <br />Dim sLog As String </p>
+<p>On Error GoTo errHandler </p>
+<p>hFile = FreeFile()   <br />sFolder = App.Path &#038; &#8220;\logs&#8221;    <br />sFile = sFolder &#038; &#8220;\Softphone.log&#8221; </p>
+<p>sLog = Format(Now(), &#8220;yyyy-mm-dd HH:nn:ss&#8221;) &#038; &#8220;.&#8221; &#038; Right(Format(Timer(), &#8220;0.000&#8221;), 3)   <br />sLog = sLog &#038; vbTab &#038; strMessage </p>
+<p>If lLineNumber > 60000 Then &#8216;Approx 5 MB   <br />    lLineNumber = 1    <br />    sDestination = sFolder &#038; &#8220;\Softphone_&#8221; &#038; Format(Now(), &#8220;yyyymmdd_HHnnss&#8221;) &#038; &#8220;.log&#8221;    <br />    FileCopy sFile, sDestination    <br />    Kill sFile    <br />Else    <br />    lLineNumber = lLineNumber + 1    <br />End If </p>
+<p>Open sFile For Append As #hFile   <br />    Print #hFile, sLog    <br />Close hFile </p>
+<p>Exit Sub </p>
+<p>errHandler: </p>
+<p>If Err.Number = 76 Then &#8216;If folder not exists, create it   <br />    MkDir sFolder    <br />    Resume    <br />End If    <br />MsgBox Err.Number &#038; &#8220;:&#8221; &#038; Err.Description </p>
+<p>End Sub</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/09/18/write-log-using-vb6/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

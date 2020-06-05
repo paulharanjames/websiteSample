@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Customer Experience &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/customer-experience/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Tue, 23 Dec 2014 15:18:29 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Report Abandoned calls in Routing Strategy</title>
+		<link>http://localhost/lakshmikanth/2014/12/23/report-abandoned-calls-routing-strategy/</link>
+					<comments>http://localhost/lakshmikanth/2014/12/23/report-abandoned-calls-routing-strategy/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 23 Dec 2014 15:18:29 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Routing]]></category>
+		<category><![CDATA[Customer Experience]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=4861</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Last month, I attended workshop from Genesys and BT  and found an interesting trend. One of the customer shared that they were able to customer satisfaction and revenue by tracking and linking customer journey through multiple channels. For example, if customer selected products online for purchase and initiates call, they were able to link this and able to provide service. Simple and effective strategy.</p>
+<p>Linking transactions across multiple channels is very big &amp; interesting topic and will restrict to only voice channels in this post.</p>
+<p>From my experience, I observed that many companies focus on active and answered calls by agent only. For example, C-SAT (Customer Satisfaction) survey are sent to customers which were answered by agent. What happens to customer disconnecting the call while waiting in queue? Most likely, these people are either looking for new service and simply switch to other provider. Others are left with no other option than wait <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f641.png" alt="🙁" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Imagine the potential loss of new customers and revenue..</p>
+<p>In this post, I will explain how to record abandoned calls for reporting from the strategy (Francesc &#8211; Thanks for sharing this idea).</p>
+<ul>
+<li>Database &#8211; Create Stored Procedure and Table</li>
+<li>Configure DAP in CME</li>
+<li>Create routing strategy for Abandoned Calls</li>
+<li>Modify existing strategy to record abandoned calls</li>
+</ul>
+<h3>Database &#8211; Create Stored Procedure and Table</h3>
+<hr />
+<p>In my environment, I made decision to record ANI, DNIS, Conn ID and Timestamp and in most cases, it is sufficient for analysis or to schedule call backs.</p>
+<p>Script to create table &#8216;CallDetails&#8217;</p>
+<pre class="theme:monokai lang:tsql decode:true" title="calldetails">create table [dbo].[calldetails](
+	[callerani] [nvarchar](50) null,
+	[callerdnis] [nvarchar](50) null,
+	[timestamp] [datetime] null,
+	[connectionid] [nvarchar](50) null
+) on [primary]
+
+go
+</pre>
+<p>Script to create stored procedure &#8216;SP_UpdateCallDetails&#8217;</p>
+<pre class="theme:monokai lang:tsql decode:true" title="sp_updatecalldetails">create procedure [dbo].[sp_updatecalldetails] 
+	@varani nvarchar(30),
+	@vardnis nvarchar(30),
+	@varconnid nvarchar(30)
+as
+begin
+	insert into calldetails values(@varani,@vardnis, getdate(),@varconnid)
+end
+
+go</pre>
+<h3> Configure DAP in CME</h3>
+<hr />
+<p>Using Genesys Administrator or Configuration Manager, create new DAP &#8216;CustomDAP&#8217; to point to reporting database</p>
+<h3>Create routing strategy for Abandoned Calls</h3>
+<hr />
+<ul>
+<li>Open IRD and create new routing strategy &#8216;RecordAbandonedCalls&#8217; as below</li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/RoutingStrategy.png"><img class="size-full wp-image-4871" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/RoutingStrategy.png" alt="Routing Strategy to store abandoned calls" width="649" height="346" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/RoutingStrategy.png 649w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/RoutingStrategy-300x160.png 300w" sizes="(max-width: 649px) 100vw, 649px" /></a></p>
+<p>Routing Strategy</p>
+<ul>
+<li>In function block, store Conn ID, ANI and DNIS values into variables varConnID, varANI and varDNIS</li>
+<li>In database block, select &#8216;Custom DAP&#8217;  which was created in first step, select stored procedure and follow the wizard</li>
+<li>In stored procedure screen, enter name as &#8216;sp_updatecalldetails&#8217; and add arguments as below
+<ul>
+<li>Key = @varConnID and value = varConnID</li>
+<li>Key = @varANI and value = varANI</li>
+<li>Key = @varDNIS and value = varDNIS</li>
+</ul>
+</li>
+<li>Click next and select &#8216;Do not use output values&#8217;</li>
+</ul>
+<h3>Modify existing strategy to record abandoned calls</h3>
+<hr />
+<p>In main strategy, add new function block after Entry and Target block as below</p>
+<figure id="attachment_4891" aria-describedby="caption-attachment-4891" style="width: 788px" class="wp-caption alignnone"><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/12/FunctionProperties.png"><img class="wp-image-4891 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/12/FunctionProperties.png" alt="OnCallAbandoned" width="788" height="536" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/12/FunctionProperties.png 788w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/FunctionProperties-300x204.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/12/FunctionProperties-768x522.png 768w" sizes="(max-width: 788px) 100vw, 788px" /></a><figcaption id="caption-attachment-4891" class="wp-caption-text">OnCallAbandoned</figcaption></figure>
+<p>Make test call and abandon it while waiting in queue. Now, you can see records in the database .You can use these records to create calling list for outbound campaign or schedule callback <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" />		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/12/23/report-abandoned-calls-routing-strategy/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

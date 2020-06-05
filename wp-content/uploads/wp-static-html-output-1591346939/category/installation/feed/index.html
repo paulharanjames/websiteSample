@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Installation &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/installation/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 23 Jul 2009 15:08:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>How to enable longer call recordings in GVP ?</title>
+		<link>http://localhost/lakshmikanth/2009/07/23/how-to-enable-longer-call-recordings-in-gvp/</link>
+					<comments>http://localhost/lakshmikanth/2009/07/23/how-to-enable-longer-call-recordings-in-gvp/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 23 Jul 2009 15:08:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[GVP]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Installation]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=691</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>To enable longer call recordings in GVP, you need to change the configuration value in GVP and procedure is as follows:</p>
+<p>1. Open IIS.   <br />2. Right-click the server, and then select Properties.    <br />3. Select the <strong>Enable Direct Metabase Edit</strong> check box, and then click OK.    <br />4. Open the MetaBase.xml file, which is located in “<strong>C:\WINNT\System32\Inetsrv”     <br /></strong>5. Locate the line <strong>AspMaxRequestEntityAllowed</strong>, and change it to 524288000.    </p>
+<p>Please note that the above steps was tested in IIS 6.0 version and above</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/07/23/how-to-enable-longer-call-recordings-in-gvp/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Hyperion Installation issues with SQL Server 2005</title>
+		<link>http://localhost/lakshmikanth/2009/07/21/hyperion-installation-issues-with-sql-server-2005/</link>
+					<comments>http://localhost/lakshmikanth/2009/07/21/hyperion-installation-issues-with-sql-server-2005/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 21 Jul 2009 09:44:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Hyperion]]></category>
+		<category><![CDATA[Installation]]></category>
+		<category><![CDATA[SQL Server 2005]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=701</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>During my current implementation, I faced issues in installing Hyperion with SQL Server 2005. Finally, figured out solution to install Hyperion with SQL Server 2005 </p>
+<p>In order to install Hyperion Repository on SQL Server 2005 Hyperion 8.5. (SP3) installer should be used as it contains updated MS SQL JDBC drivers which function correctly with SQL Server 2005. The Hyperion Performance Suite 8.5 SP1 and up does support SQL Server 2005 just the installer does not. There are several workarounds available such as installing Hyperion Repository on SQL Server 2000 then following the procedure migrating it to SQL Server 2005, or to use Hyperion Installer 8.5 SP1 and above with updated JDBC driver in override directory.    </p>
+<p>To install HpSu SP3 on SQL Server 2005 repository given the latest Genesys CD availability you needs to use the HpSu 8.5 SP3 installer.    </p>
+<p>Please use &#8216;Full Hyperion INTELLIGENCE SERVER 8.5.0.3&#8217; for installation</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/07/21/hyperion-installation-issues-with-sql-server-2005/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Deployment Sequence for Genesys Inbound Voice Solution</title>
+		<link>http://localhost/lakshmikanth/2008/07/30/deployment-sequence-for-genesys-inbound-voice-solution/</link>
+					<comments>http://localhost/lakshmikanth/2008/07/30/deployment-sequence-for-genesys-inbound-voice-solution/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 30 Jul 2008 08:45:00 +0000</pubDate>
+				<category><![CDATA[Deployment Sequence]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Installation]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=1011</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				I received emails requesting for Genesys deployment sequence for inbound voice solution.  As informed to you earlier by email, please find the deployment sequence as below</p>
+<p>I prefer manual installation of the components and you may use the wizard to install components from Management layer onwards.</p>
+<p><strong><span>1. Configuration Layer</span></strong></p>
+<ul type="disc"></p>
+<li>DB Server      (providing access to the Configuration Database)</li>
+<p></p>
+<li>Create      &#038; Initialize Configuration Database with appropriate access</li>
+<p></p>
+<li>Configuration      Server</li>
+<p></p>
+<li>Encrypt password in configuration file using      command line argument as</li>
+<p></ul>
+<p>&#8220;confserv -p </p>
+<section name> <password value>&#8220;</p>
+<ul type="disc"></p>
+<li>Configuration      Manager</li>
+<p></p>
+<li>Configuration      Server Proxy (optional)</li>
+<p></p>
+<li>Configuration      Import Wizard (optional)</li>
+<p></p>
+<li>Configure      Host in Configuration Manager</li>
+<p></ul>
+<p><strong><span>2. Management Layer</span></strong></p>
+<ul type="disc"></p>
+<li>Log DB      Server (providing access to the Centralized Log Database)</li>
+<p></p>
+<li>LogDAP</li>
+<p></p>
+<li>Message      Server</li>
+<p></p>
+<li>Create and      Initialize Centralized Log Database</li>
+<p></p>
+<li>Local      Control Agent</li>
+<p></p>
+<li>Solution      Control Server (SCS)</li>
+<p></p>
+<li>Solution      Control Interface (SCI)</li>
+<p></ul>
+<p>To view logs in SCI, you need to set <strong>&#8220;db_storage&#8221;</strong> option in Message server to <strong>&#8220;true&#8221;</strong></p>
+<p>Please Install <strong>&#8220;FlexLM License Manager&#8221;</strong> before the Media Layer implementation.</p>
+<p><strong> <span>3. Media Layer</span></strong></p>
+<ul type="disc"></p>
+<li>T-Server</li>
+<p></ul>
+<p><strong><span>4. Services Layer</span></strong></p>
+<ul type="disc"></p>
+<li>DB Server</li>
+<p></p>
+<li>Routing Stat      Server</li>
+<p></p>
+<li>Routing      Message Server</li>
+<p></p>
+<li>URS</li>
+<p></p>
+<li>IRD (GUI      Application to create, load and monitor strategies)</li>
+<p></p>
+<li>Reporting      Stat Server</li>
+<p></p>
+<li>CCPulse+      (GUI Application to view real time reports)</li>
+<p></ul>
+<p>I haven&#8217;t included historical reporting here, as I feel most of the customers will be migrating for Call Concentrator (CCon) or Interaction Concentrator (ICON)		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2008/07/30/deployment-sequence-for-genesys-inbound-voice-solution/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

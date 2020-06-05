@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CME &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/cme/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Mon, 23 Feb 2009 18:55:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>How to avoid ‘Administrator’ access to supervisors?</title>
+		<link>http://localhost/lakshmikanth/2009/02/23/how-to-avoid-administrator-access-to-supervisors/</link>
+					<comments>http://localhost/lakshmikanth/2009/02/23/how-to-avoid-administrator-access-to-supervisors/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 23 Feb 2009 18:55:00 +0000</pubDate>
+				<category><![CDATA[Access Group]]></category>
+		<category><![CDATA[CME]]></category>
+		<category><![CDATA[Configuration Manager]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Security]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=831</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>In Genesys, if you are configuring non-agent, they are automatically added to the ‘Administrators’ access group. Many times, we have to configure Supervisors and would like to provide access to their agent group only. Prior to 7.6 version, it is achieved by creating new access group and removing the person from Administrators group.</p>
+<p>From 7.6, you can disable the default access to the users. For every user, you need to manually assign him to the access group. </p>
+<p>To disable the default access, create section <strong>‘Security’</strong> in Configuration Server ‘<strong>Options’</strong> tab and configure the option to <strong>‘no-default-access’</strong> to <strong>‘0’. </strong>Simple and found it useful to avoid any human errors</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/02/23/how-to-avoid-administrator-access-to-supervisors/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Configure Configuration Server in CME</title>
+		<link>http://localhost/lakshmikanth/2009/02/23/configure-configuration-server-in-cme/</link>
+					<comments>http://localhost/lakshmikanth/2009/02/23/configure-configuration-server-in-cme/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 23 Feb 2009 18:39:00 +0000</pubDate>
+				<category><![CDATA[CME]]></category>
+		<category><![CDATA[Configuration Manager]]></category>
+		<category><![CDATA[Configuration Server]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Management Layer]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=851</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>The Configuration Server Application object is preconfigured in the Configuration Database. You need to make the below changes in the Configuration   <br />Server Application in CME for Management Layer to control Configuration Server:</p>
+<ol>
+<li>Open Configuration Manager aka CME</li>
+<li>Create a ‘<strong>Host’</strong> object for the computer on which Configuration Server runs</li>
+<li>Open the Properties dialog box of the ‘<strong>Configuration Server’</strong> Application (named <strong>‘confserv’</strong>)</li>
+<li>Click the <strong>‘Server Info’</strong> tab</li>
+<li>Click Browse to select the Host that you created in <strong>Step 2</strong></li>
+<li>On the ‘<strong>Start Info’</strong> tab, define the <strong>‘Working Directory’</strong> and <strong>‘Command Line’</strong> properties for the primary Configuration Server</li>
+<li>Click <strong>OK</strong> to save the changes.</li>
+</ol>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/02/23/configure-configuration-server-in-cme/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to find DBID of Applications in Genesys?</title>
+		<link>http://localhost/lakshmikanth/2009/01/26/how-to-find-dbid-of-applications-in-genesys/</link>
+					<comments>http://localhost/lakshmikanth/2009/01/26/how-to-find-dbid-of-applications-in-genesys/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 26 Jan 2009 23:14:00 +0000</pubDate>
+				<category><![CDATA[CME]]></category>
+		<category><![CDATA[Configuration Manager]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tricks]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=901</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In Genesys, you need to know DBID of applications to configure alarms/blocking logs from Message Server.  Ever wondered to find out DBID of the application&#8230; Here is the trick&#8230;</p>
+<p>Open configuration manager (CME) from command prompt, using the <strong>-d</strong> command line parameter. For example, &#8220;D:\GCTI\SCE.exe -d&#8221;.. That&#8217;s it <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>Now you will find the application DBID in the Application Properties Dialog box.</p>
+<p>If you want to view the DBID by default, right click the CME shortcut and add &#8220;-d&#8217; in target text box.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/01/26/how-to-find-dbid-of-applications-in-genesys/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

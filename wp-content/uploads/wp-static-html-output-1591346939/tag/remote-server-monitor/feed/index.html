@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Remote Server Monitor &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/remote-server-monitor/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 11 Jun 2014 08:42:55 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>WMI &#8216;Access Denied &#8216; on remote computer</title>
+		<link>http://localhost/lakshmikanth/2014/06/11/wmi-access-denied-on-remote-computer/</link>
+					<comments>http://localhost/lakshmikanth/2014/06/11/wmi-access-denied-on-remote-computer/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 11 Jun 2014 08:42:55 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Permission Error]]></category>
+		<category><![CDATA[Remote Server Monitor]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[WMI]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2321</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In my current project, I would like to monitor windows 2008 servers remotely and planned to use WMI. While my code worked locally, I got &#8216;Access Denied&#8217; error while trying to access Windows 2008 servers.</p>
+<p>Although, I enabled DCOM remote activation, I still received error and close to pulling my hair. Finally, I figured that permissions are not propagated and was set only at root level, causing an issue.</p>
+<p>For everyone&#8217;s benefit, I listed steps below to configure DCOM and WMI to monitor remote servers</p>
+<h3><strong>Configure DCOM</strong></h3>
+<hr />
+<p>&nbsp;</p>
+<div>
+<ul style="color: #000000;">
+<li>On the server to be managed click Start, click Run, type <strong>dcomcnfg</strong>, and then click OK.</li>
+<li>In the Component Services dialog box, expand Component Services, expand Computers, and then right-click <strong>My Computer</strong> and click <strong>Properties</strong>.</li>
+<li>In the My Computer Properties dialog box, click the <strong>COM Security tab.</strong></li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Dcom-Properties.png"><img class="aligncenter size-full wp-image-2341" src="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Dcom-Properties.png" alt="Dcom Properties" width="414" height="564" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Dcom-Properties.png 414w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Dcom-Properties-220x300.png 220w" sizes="(max-width: 414px) 100vw, 414px" /></a></p>
+<ul style="color: #000000;">
+<li>Under Launch and Activation Permissions, click <strong>Edit Limits</strong>.</li>
+<li>In the Launch Permission dialog box, select &#8216;<strong>Distributed COM Users</strong>&#8216;. In the Allow column under Permissions for User, select <strong>Remote Launch</strong> and select <strong>Remote Activation</strong>, and then click OK.</li>
+<li>Under <strong>Access Permissions</strong>, click <strong>Edit Limits</strong>.</li>
+<li>In the Access Permission dialog box, select &#8216;<strong>Distributed COM Users</strong>&#8216;. In the Allow column under Permissions for User, select <strong>Remote Access</strong>, and then click OK.</li>
+<li>Add the user account to the Distributed COM Users Group in Computer Management, Local Users and Groups on the Server to be managed.</li>
+<li>Add the user account to the Performance Log Users Group in Computer Management, Local Users and Groups on the Server to be managed.</li>
+</ul>
+<h3 style="color: #000000;"><strong>Configure WMI</strong></h3>
+<hr />
+<ul style="color: #000000;">
+<li>On the server to be managed click Start, click Run, type <strong>wmimgmt.msc</strong>, and then click OK.</li>
+<li>In the console tree, right-click WMI Control, and then click Properties.</li>
+<li>Click the Security tab.</li>
+<li>Select the Root namespace and then click Security.</li>
+<li>In the Security dialog box, click Add.</li>
+<li>In the Select Users, Computers, or Groups dialog box, enter the user account. Click the Check Names button to verify your entry and then click OK.</li>
+<li>In the Security dialog box, under Permissions, select &#8216;Enable Account&#8217; and &#8216;Remote Enable&#8217; for the user account.</li>
+<li><span style="text-decoration: underline;">Ensure the permissions propagate to all subnamespaces.</span>
+<ul>
+<li>Under Security, Click Advanced and double click user/group to open properties</li>
+<li>Select &#8216;This namespaces and subnamespaces&#8217; to propagate permissions</li>
+</ul>
+</li>
+</ul>
+<p><a href="/wp-content/uploads/2014/06/Permission-Settings.png"><img class="aligncenter size-full wp-image-2331" src="/wp-content/uploads/2014/06/Permission-Settings.png" alt="Permission Settings" width="377" height="481" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/06/Permission-Settings.png 377w, http://localhost/lakshmikanth/wp-content/uploads/2014/06/Permission-Settings-235x300.png 235w" sizes="(max-width: 377px) 100vw, 377px" /></a></p>
+</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/06/11/wmi-access-denied-on-remote-computer/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

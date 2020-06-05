@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Record History &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/record-history/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Fri, 13 Mar 2009 00:33:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Attaching Record information to OCS Record History logging</title>
+		<link>http://localhost/lakshmikanth/2009/03/13/attaching-record-information-to-ocs-record-history-logging/</link>
+					<comments>http://localhost/lakshmikanth/2009/03/13/attaching-record-information-to-ocs-record-history-logging/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 13 Mar 2009 00:33:00 +0000</pubDate>
+				<category><![CDATA[Configuration]]></category>
+		<category><![CDATA[Dialer (OCS)]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[OCS]]></category>
+		<category><![CDATA[Record History]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=781</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p> Record History logging provides you with additional reporting options for</p>
+<p>calling lists. This logging process does not use database access to write logs;</p>
+<p>instead it uses flat (text) files that the customer defines. You can turn enable this logging for selective calling lists.</p>
+<p><b>How to configure Record history logging:</b></p>
+<ul>
+<li>In CME, select the calling list </li>
+<li>Go to Annex Tab and create section <b>‘default’</b>, if not available already </li>
+<li>Create option <b>‘dial_log_destination’</b> with value as <b>‘Folder Path’</b> to store record history log files </li>
+<li>Create Option <b>‘dial_log_delimiter’ </b>with value as <b>‘,’ </b>to create comma separated delimiter between the fields </li>
+</ul>
+<p>By default, it attaches the below mentioned mandatory fields</p>
+<ul>
+<li>record_id </li>
+<li>contact_info </li>
+<li>contact_info_type </li>
+<li>record_type </li>
+<li>record_status </li>
+<li>call_result </li>
+<li>attempt </li>
+<li>dial_sched_time </li>
+<li>call_time </li>
+<li>daily_from </li>
+<li>daiy_till </li>
+<li>tz_dbid </li>
+<li>agent_id </li>
+<li>chain_id </li>
+<li>chain_n </li>
+</ul>
+<p>If you want to attach user-defined fields in the record history logging, please follow the steps below</p>
+<ul>
+<li>In CME, select the field . </li>
+<li>Go to Annex Tab and create section ‘default’, if not available already. </li>
+<li>Create Option ‘send_attribute’ with value as field name. </li>
+</ul>
+<p>Record History log will then have the value with key as field name and value.. <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> </p>
+<p>I am playing with Genesys 8.0 and planned to cover the details in the coming weeks.. keep watching this space..</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/03/13/attaching-record-information-to-ocs-record-history-logging/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

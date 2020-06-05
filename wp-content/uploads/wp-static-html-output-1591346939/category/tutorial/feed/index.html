@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Tutorial &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/tutorial/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Tue, 25 Sep 2012 09:07:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>C# Tutorial for absolute beginners</title>
+		<link>http://localhost/lakshmikanth/2012/09/25/c-tutorial-for-absolute-beginners/</link>
+					<comments>http://localhost/lakshmikanth/2012/09/25/c-tutorial-for-absolute-beginners/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 25 Sep 2012 09:07:00 +0000</pubDate>
+				<category><![CDATA[C#]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=271</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>If you are new to programming and want to learn C#, you can learn programming fundamentals <a href="http://channel9.msdn.com/Series/C-Sharp-Fundamentals-Development-for-Absolute-Beginners" target="_blank" rel="noopener noreferrer">here</a>. Very good resource for new learners…</p>
+<p>Stay tuned on Channel 9, as they promised to add concepts applicable to video games, mobile and client application.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/09/25/c-tutorial-for-absolute-beginners/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Calculate MD5 hash from a string</title>
+		<link>http://localhost/lakshmikanth/2012/09/23/calculate-md5-hash-from-a-string/</link>
+					<comments>http://localhost/lakshmikanth/2012/09/23/calculate-md5-hash-from-a-string/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Sun, 23 Sep 2012 08:43:00 +0000</pubDate>
+				<category><![CDATA[C#]]></category>
+		<category><![CDATA[Code Snippet]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=291</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>It is a common practice to store passwords in databases using a hash. MD5 (defined in <a href="http://www.ietf.org/rfc/rfc1321.txt">RFC 1321</a>) is a common hash algorithm, and using it from C# is easy. </p>
+<p>Here’s an implementation of a method that converts a string to an MD5 hash, which is a 32-character string of hexadecimal numbers.</p>
+<pre>public string CalculateMD5Hash(string input)<br>{<br>    // step 1, calculate MD5 hash from input<br>    MD5 md5 = System.Security.Cryptography.MD5.Create();<br>    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);<br>    byte[] hash = md5.ComputeHash(inputBytes);<br><br>    // step 2, convert byte array to hex string<br>    StringBuilder sb = new StringBuilder();<br>    for (int i = 0; i < hash.Length; i++)<br>    {<br>        sb.Append(hash[i].ToString("X2"));<br>    }<br>    return sb.ToString();<br>}<br></pre>
+<p></p>
+<p>An example call:</p>
+<pre>string hash = CalculateMD5Hash("abcde123");</pre>
+<p></p>
+<p>…returns a string like this:</p>
+<pre>C3FCD3D76192E4007DFB496CCA67E13B</pre>
+<p></p>
+<p>To make the hex string use lower-case letters instead of upper-case, replace the single line inside the <em>for </em>loop with this line:</p>
+<pre>sb.Append(hash[i].ToString("x2"));</pre>
+<p></p>
+<p>The difference is the ToString method parameter.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/09/23/calculate-md5-hash-from-a-string/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SIP Tutorial Part 3 – Commands</title>
+		<link>http://localhost/lakshmikanth/2012/09/10/sip-tutorial-part-3-commands/</link>
+					<comments>http://localhost/lakshmikanth/2012/09/10/sip-tutorial-part-3-commands/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 10 Sep 2012 10:51:00 +0000</pubDate>
+				<category><![CDATA[Session Initiation Protocol]]></category>
+		<category><![CDATA[SIP]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=301</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<ul>
+<li><i><strong>INVITE</strong> :</i>Invites a user to a call  </li>
+<li><i><strong>ACK</strong></i> : Acknowledgement of the request.  </li>
+<li><i><strong>BYE</strong></i> :Terminates a connection between users  </li>
+<li><i><strong>CANCEL</strong></i> :Terminates a request, or search, for a user.  </li>
+<li><i><strong>OPTIONS</strong></i> :Solicits information about a server&#8217;s capabilities.  </li>
+<li><i><strong>REGISTER</strong></i> :Registers a user&#8217;s current location  </li>
+<li><i><strong>INFO</strong></i> :Used for mid-session signalling</li>
+</ul>
+<p>It would be easy to understand the above commands with an example and will cover this in next blog</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/09/10/sip-tutorial-part-3-commands/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SIP Tutorial Part 2– Components</title>
+		<link>http://localhost/lakshmikanth/2012/09/05/sip-tutorial-part-2-components/</link>
+					<comments>http://localhost/lakshmikanth/2012/09/05/sip-tutorial-part-2-components/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 05 Sep 2012 09:09:00 +0000</pubDate>
+				<category><![CDATA[Session Initiation Protocol]]></category>
+		<category><![CDATA[SIP]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=311</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>SIP elements are as below</p>
+<p><em><strong>User Agent:</strong></em> The user agent resides in every SIP end station. It acts in two roles:</p>
+<ul>
+<ul>
+<li><strong>User Agent Client (UAC):</strong> Issues SIP requests</li>
+<li><strong>User Agent Server (UAS)</strong>: Receives SIP requests and generates a response that accepts, rejects, or redirects the request</li>
+</ul>
+</ul>
+<p>Examples:  Softphone application, Messaging Client</p>
+<p><em><strong>Redirect Server:</strong></em> The redirect server is used during session initiation to determine the address of the called device. The redirect server returns this information to the calling device, directing the UAC to contact an alternate <em>Universal Resource Identifier</em> (URI). A URI is a generic identifier used to name any resource on the Internet. The URL used for Web addresses is a type of URI. See RFC 2396 [1] for more detail.</p>
+<p><em><strong></strong></em> </p>
+<p><em><strong>Proxy Server:</strong></em> The proxy server is an intermediary entity that acts as both a server and a client for the purpose of making requests on behalf of other clients. A proxy server primarily plays the role of routing, meaning that its job is to ensure that a request is sent to another entity closer to the targeted user. Proxies are also useful for enforcing policy (for example, making sure a user is allowed to make a call). A proxy interprets, and, if necessary, rewrites specific parts of a request message before forwarding it.</p>
+<p><em><strong></strong></em> </p>
+<p><em><strong>Registrar:</strong></em> A registrar is a server that accepts REGISTER requests and places the information it receives (the SIP address and associated IP address of the registering device) in those requests into the location service for the domain it handles.</p>
+<p><em><strong></strong></em> </p>
+<p><em><strong>Location Service:</strong></em> A location service is used by a SIP redirect or proxy server to obtain information about a callee&#8217;s possible location(s). For this purpose, the location service maintains a database of SIP-address/ IP-address mappings.</p>
+<p> </p>
+<p>In the next tutorial, we will review SIP command requests with more detail.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/09/05/sip-tutorial-part-2-components/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SIP Tutorial for beginners – Part I</title>
+		<link>http://localhost/lakshmikanth/2012/09/03/sip-tutorial-for-beginners-part-i/</link>
+					<comments>http://localhost/lakshmikanth/2012/09/03/sip-tutorial-for-beginners-part-i/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 03 Sep 2012 13:49:00 +0000</pubDate>
+				<category><![CDATA[Session Initiation Protocol]]></category>
+		<category><![CDATA[SIP]]></category>
+		<category><![CDATA[Tutorial]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=321</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>SIP (Session Initiation Protocol) is a signalling protocol used to create, manage and terminate sessions in an IP based network.  SIP makes it possible to implement services like phone call, click-to-dial  or instant messaging in an IP based environment.  Please note that SIP is used only for signalling and session control and actual data exchanges are handled by other protocols like RTP (Real-time transmission protocol).</p>
+<p>SIP provides capabilities to </p>
+<ul>
+<li>determine the location of end points </li>
+<li>determine the media capabilities using SDP and negotiates services between end points</li>
+<li>determine the status of end point – available/busy etc..</li>
+<li>establishes session between end points </li>
+<li>call management – hold, release, transfer etc. For transfer, it simply establishes session with new end point with the transferee and terminates session with transferring party </li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2012/09/03/sip-tutorial-for-beginners-part-i/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

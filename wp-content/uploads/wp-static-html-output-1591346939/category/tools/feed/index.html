@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Tools &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/tools/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Fri, 18 Nov 2016 12:05:03 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>WatchDog &#8211; Tool to monitor file changes</title>
+		<link>http://localhost/lakshmikanth/2016/11/18/watchdog/</link>
+					<comments>http://localhost/lakshmikanth/2016/11/18/watchdog/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 18 Nov 2016 12:05:03 +0000</pubDate>
+				<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Alerts]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6861</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				<strong>WatchDog</strong> is simple windows service application to monitor file changes and send email alerts in local server. Main purpose of the application is to alert Consultants &amp; IT administrators about accidental changes in configuration files.</p>
+<h2>Installation</h2>
+<hr />
+<h3>Pre-reqs:</h3>
+<ul>
+<li>  .NET Framework 4.5.2</li>
+<li>  User with Administrator priviliges</li>
+</ul>
+<h3>Installation Procedure</h3>
+<hr />
+<ul>
+<li>Create folder &#8220;Watchdog&#8221; in your local drive ex: C:\WatchDog</li>
+<li><a href="https://www.dropbox.com/sh/kzbg2tbpe4oe2gh/AAAjJxwwsadxpGCe2PMpYPZaa?dl=0">Download</a> and copy the following files under &#8220;Watchdog&#8221;
+<ul>
+<li>WatchDog.exe</li>
+<li>WatchDog.exe.config</li>
+<li>FilesToWatch.cfg</li>
+<li>readme.txt</li>
+</ul>
+</li>
+<li>Open command prompt with Administrator priviliges and navigate to &#8220;WatchDog&#8221; folder</li>
+<li>Type and run command WatchDog.exe install</li>
+<li>On successful execution, windows service &#8220;WatchDog&#8221; installed in your computer</li>
+</ul>
+<p><strong>Download Link :</strong> <a href="https://www.dropbox.com/sh/kzbg2tbpe4oe2gh/AAAjJxwwsadxpGCe2PMpYPZaa?dl=0">https://www.dropbox.com/sh/kzbg2tbpe4oe2gh/AAAjJxwwsadxpGCe2PMpYPZaa?dl=0</a></p>
+<h3>To uninstall</h3>
+<hr />
+<ul>
+<li>Open command prompt with Administrator priviliges and navigate to &#8220;WatchDog&#8221; folder</li>
+<li>Type and run command WatchDog.exe uninstall</li>
+<li>On successful execution, windows service &#8220;WatchDog&#8221; is uninstalled in your computer</li>
+<li>Delete &#8220;WatchDog&#8221; folder from your computer</li>
+</ul>
+<h2>Configuration details</h2>
+<hr />
+<p><strong>File : WatchDog.exe.config</strong></p>
+<ul>
+<li><em><strong>Service -&gt; FlexiContact.serviceName :</strong> </em>Windows service name. This should be unique value in the local server. Default value: FxWatchDog</li>
+<li><em><strong>Service -&gt; FlexiContact.serviceDisplayName:</strong></em> Windows service display name. Default value: WatchDog</li>
+<li><em><strong>Service -&gt; FlexiContact.serviceDescription: </strong></em> Windows service description. Default value: Windows Service to monitor file changes</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_host:</strong></em> SMTP Server IP address or host name</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_port:</strong></em> SMTP Server port number</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_userName:</strong></em> user name for SMTP authentication. Must be configured if &#8220;smtp_useSMTPAuthentication&#8221; set to &#8216;True&#8217;</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_userPassword:</strong></em> user password for SMTP authentication. Must be configured if &#8220;smtp_useSMTPAuthentication&#8221; set to &#8216;True&#8217;</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_fromAddress:</strong></em> From Address</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_toAddress:</strong></em> To Address. Use pipe delimiter to send email to multiple address. Ex: john@doe.com|findme@johndoe.com</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_enableSSL:</strong></em> Set to &#8216;True&#8217; if SMTP Server requires SSL. Valid values: TRUE, FALSE</li>
+<li><em><strong>WatchDog.Properties.Settings -&gt; smtp_useSMTPAuthentication:</strong></em> Set to &#8216;True&#8217; if SMTP Server requires authentication. Valid values: TRUE, FALSE</li>
+</ul>
+<p>For changes to take effect, you need to restart application/service</p>
+<p><strong>File : FilesToWatch.cfg</strong></p>
+<p>Configure the folder and files to monitor for configuration changes. You need to configure each file in seperate row.</p>
+<p>For example,</p>
+<pre class="lang:default decode:true ">"C:\Temp\","*.log"</pre>
+<ul>
+<li>&#8220;C:\Temp&#8221;    =&gt; Folder</li>
+<li>&#8220;*.log&#8221;        =&gt; File Pattern.</li>
+</ul>
+<p>In this case, email alerts will be generated for any file with *.log extension in &#8216;C:\Temp&#8217; folder.</p>
+<p><strong>log4net.config</strong></p>
+<p>WatchDog application Apache log4net library for logging. Please refer to https://logging.apache.org/log4net/release/manual/configuration.html		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/11/18/watchdog/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Simple SFTP Server Tool for testing and development</title>
+		<link>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/</link>
+					<comments>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 26 May 2016 18:00:58 +0000</pubDate>
+				<category><![CDATA[.NET]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6751</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Here is the simple SFTP Server for lab testing purpose. It is light-weight, simple and easy to use. Like all other tools from me, just unzip and run it in your server or desktop.</p>
+<h2>Getting Started</h2>
+<hr />
+<ul>
+<li>Download and unzip file from dropbox <a href="https://www.dropbox.com/sh/gh42x5vxaq0owdx/AAAepISi_jAOJu3Qk37zLbAqa?dl=0">here</a></li>
+<li>Run SFTPServer.exe</li>
+<li>Press &#8216;Start&#8217; button to start SFTP Server</li>
+</ul>
+<p><a href="/wp-content/uploads/2016/05/Simple-SFTPServer-1.png"><img class="aligncenter size-full wp-image-6761" src="/wp-content/uploads/2016/05/Simple-SFTPServer-1.png" alt="Simple SFTPServer" width="960" height="596" /></a></p>
+<h2>Features</h2>
+<hr />
+<ul>
+<li>Easy to use simple SFTP Server</li>
+<li>Just unzip and run</li>
+<li>Requires .NET Framework 4.5.2 and runs on any windows platform</li>
+<li>Supports public/private key authentication (RSA Key)</li>
+</ul>
+<h2>When and why should you run this application?</h2>
+<hr />
+<p>Mostly used for development and testing purpose. Instead of spending hours trying to setup SFTP Server and users,  you can run this application locally.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2016/05/26/simple-sftp-server-tool/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>How to disable trackpad on bootcamp?</title>
+		<link>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/</link>
+					<comments>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 30 Dec 2015 16:53:09 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[bootcamp]]></category>
+		<category><![CDATA[trackpad]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=6181</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Recently, I installed windows 10 using bootcamp on Mac pro and want to disable trackpad. In this post, I will explain two possible solutions for this.</p>
+<h3>Solution 1 &#8211; Disable Trackpad Hardware</h3>
+<hr />
+<ul>
+<li>Click <strong>Start -&gt; Settings</strong> and Search for <strong>Device Manager</strong></li>
+<li>Expand &#8216;<strong>Human Interface Devices&#8217;</strong> and select <strong>Apple SPI Trackpad</strong></li>
+<li>Right Click<strong> &#8216;Apple SPI Trackpad&#8217;</strong> and select <em><strong>&#8216;disable&#8217;</strong></em></li>
+</ul>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad.png" rel="attachment wp-att-6191"><img class="aligncenter wp-image-6191 size-large" src="/wp-content/uploads/2015/12/Disable_Trackpad-1024x750.png" alt="Disable Trackpad" width="600" height="439" srcset="http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-1024x750.png 1024w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-300x220.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad-768x563.png 768w, http://localhost/lakshmikanth/wp-content/uploads/2015/12/Disable_Trackpad.png 1171w" sizes="(max-width: 600px) 100vw, 600px" /></a></p>
+<h3>Solution 2 &#8211; Using Third Party Tool</h3>
+<hr />
+<ul>
+<li>Download and Install Trackpad Magic from<a href="http://pocketlim.com/" target="_blank" rel="noopener noreferrer"> http://pocketlim.com/</a></li>
+<li>Right-click the Trackpad Magic icon that appears in your system tray.</li>
+<li>Click<em><strong> &#8220;Disable Apple Trackpad&#8221;</strong></em> to completely disable the touchpad. Click <em><strong>&#8220;Automatically Disable Trackpad When External Mouse is Plugged in&#8221;</strong> </em>to only disable the trackpad if you connect a mouse.</li>
+</ul>
+<p><a href="/wp-content/uploads/2015/12/PocketLim.png" rel="attachment wp-att-6201"><img class="aligncenter wp-image-6201" src="/wp-content/uploads/2015/12/PocketLim-300x79.png" alt="Disable Trackpad on bootcamp" width="342" height="95" /></a>		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/12/30/how-to-disable-trackpad-on-bootcamp/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Log archiver tool &#8211; Zipper &#8211; New features</title>
+		<link>http://localhost/lakshmikanth/2014/08/15/zipper-2-0-log-archiver/</link>
+					<comments>http://localhost/lakshmikanth/2014/08/15/zipper-2-0-log-archiver/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 15 Aug 2014 13:59:58 +0000</pubDate>
+				<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Utilities]]></category>
+		<category><![CDATA[Archiver]]></category>
+		<category><![CDATA[zipper]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2771</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Last year, I wrote <a title="Zipper– Log Archiver tool" href="http://www.lakshmikanth.com/zipper-log-archiver-tool/" target="_blank" rel="noopener noreferrer">Zipper</a>, a log archiver utility tool to save log files in compressed format (zip). Thanks for all your feedback comments and suggestions for more features.</p>
+<p>I picked two common requests from the list, which was as below</p>
+<ul>
+<li>Scheduling functionality</li>
+<li>Use 7z format than zip format for compression</li>
+</ul>
+<p>I am happy to inform you that next version of Zipper is now available (Download link below)</p>
+<h2>7z Format</h2>
+<hr />
+<p>Currently, 7z format uses high level compression. I choose to integrate it using 7z command line utility for the following reasons</p>
+<ul>
+<li>Integrating 7z using LZMA SDK time consuming process</li>
+<li>With command line utility, it is easy to support future versions of 7zip as we just need to replace file</li>
+</ul>
+<p>Results are clear and 7z format wins. Amazingly, it was able to compress 20 MB log file into 964 KB (screenshot below), which will translate into huge savings in disk space. Just like me, most of you will be using accessing server in WAN and no need to explain time savings in copying file into local system for analysis <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Compressed.png"><img class="aligncenter wp-image-2791 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Compressed.png" alt="Compression difference between 7z and zip format" width="685" height="160" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Compressed.png 685w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Compressed-300x70.png 300w" sizes="(max-width: 685px) 100vw, 685px" /></a></p>
+<h2> Scheduler</h2>
+<hr />
+<p>In previous version of zipper application, we relied on windows task scheduler. Though, it worked fine but it created dependency on user accounts and some of you reported issues around password expiration, user permissions etc.</p>
+<p>In this version,  zipper uses inbuilt scheduler functionality using <a title="Quartz Scheduler" href="http://www.quartz-scheduler.net/" target="_blank" rel="noopener noreferrer">quartz scheduler</a>. You can use cron expression to schedule zipper functionality. <a title="CronMaker" href="http://www.cronmaker.com/">CronMaker</a> is an excellent tool to generate cron expressions and in the web site, simply enter your requirements to generate cron expression</p>
+<p>Here are few examples below</p>
+<p>[table id=1 /]</p>
+<h2>Installation and Configuration</h2>
+<hr />
+<p>Zipper is simple standard windows installer. Just download and setup.exe to install zipper application.</p>
+<p>To configure zipper application, refer to this <a title="Zipper– Log Archiver tool" href="http://www.lakshmikanth.com/zipper-log-archiver-tool/" target="_blank" rel="noopener noreferrer">post</a>  and to configure zipper as windows service, run &#8216;install.bat&#8217; from the installation directory and successful installation of windows service is shown below for reference</p>
+<p><a href="/wp-content/uploads/2014/08/Install.png"><img class="aligncenter wp-image-2911 size-full" src="/wp-content/uploads/2014/08/Install.png" alt="Zipper 2.0 Install Sucess Screen" width="709" height="417" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Install.png 709w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Install-300x176.png 300w" sizes="(max-width: 709px) 100vw, 709px" /></a></p>
+<p>Similarly, run &#8216;uninstall.bat&#8217; to uninstall from windows services</p>
+<p><a href="/wp-content/uploads/2014/08/Uninstall.png"><img class="aligncenter wp-image-2921 size-full" src="/wp-content/uploads/2014/08/Uninstall.png" alt="Zipper 2.0 Uninstall success" width="613" height="370" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Uninstall.png 613w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Uninstall-300x181.png 300w" sizes="(max-width: 613px) 100vw, 613px" /></a></p>
+<p><strong>Note: </strong>To install or uninstall windows service, you should run &#8216;command&#8217; prompt with Administrator privileges</p>
+<h6><span style="color: #000000;"><strong>Download latest version of zipper<span style="color: #993300;"> <a title="Download" href="https://app.box.com/s/cegdgm3pr4jntma1xz1z" target="_blank" rel="noopener noreferrer"><span style="color: #993300;">here</span></a></span></strong></span></h6>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/08/15/zipper-2-0-log-archiver/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Genesys GPlus &#8211; Aspect eWFM Simulator</title>
+		<link>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/</link>
+					<comments>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 07 Aug 2014 15:22:32 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Aspect]]></category>
+		<category><![CDATA[eWFM]]></category>
+		<category><![CDATA[GPlus]]></category>
+		<category><![CDATA[Simulator]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2531</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In my current project, I am working on integrating Genesys G+ Adapter with Aspect eWFM (Workforce Management solution). We completed internal testing and wrote blog about configuring alarms for GPlus Adapter here (<a title="How to configure alarm conditions for GPlus Adapter?" href="http://lakshmikanth.azurewebsites.net/how-to-configure-alarm-conditions-for-gplus-adapter/" target="_blank" rel="noopener noreferrer">how-to-configure-alarm-conditions-for-gplus-adapter?</a>)</p>
+<p>To verify configuration and successful integration, I realized that I need to have RTA Server simulator for the following reasons</p>
+<ul>
+<li><strong>Dependency on Aspect engineer</strong> &#8211; Aspect eWFM is hosted and managed by third party vendor. Even for minor changes like agent id to login id, aspect engineer&#8217;s availability became an issue as it extended project timelines and naturally, increased cost</li>
+<li><strong>Network &amp; Firewall Issues</strong> &#8211; Our environment is complex where real time data need to traverse through multiple networks &amp; firewalls and each segment, source &amp; destination IP address are <a title="NAT" href="http://en.wikipedia.org/wiki/Network_address_translation" target="_blank" rel="noopener noreferrer">NAT</a>&#8216;ed for security purpose. We need to identify whether packets are sent from GPlus Adapter and if yes, what is sent. Unfortunately, GPlus Adapter logs doesn&#8217;t have this information</li>
+<li><strong>Fail over and Load testing</strong> &#8211; We had single eWFM environment for both production and testing and can&#8217;t be used for fail over &amp; load testing</li>
+</ul>
+<p>With little bit of help from Aspect documents and my own analysis to understand Aspect RTA server, I completed development of RTA Simulator.</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png"><img class="aligncenter wp-image-2541 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png" alt="Aspect RTA Debugger" width="958" height="705" srcset="http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger.png 958w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger-300x221.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2014/08/Aspect-RTA-Debugger-768x565.png 768w" sizes="(max-width: 958px) 100vw, 958px" /></a></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/1-filled-32.png"><img class="alignleft wp-image-2581" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/1-filled-32.png" alt="1-filled-32" width="24" height="24" /></a></p>
+<p>&nbsp;</p>
+<p>Message Packet timestamp &#8211; To identify network disconnects in the environment</p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/2-filled-32.png"><img class="alignleft wp-image-2591" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/2-filled-32.png" alt="2-filled-32" width="24" height="24" /></a></p>
+<p>Actual message packet &#8211; I parsed message packet to check timestamp , agent state record etc. Clicking &#8216;StateRecordMessage&#8217; shows agent state details as below<a style="font-style: normal;" href="/wp-content/uploads/2014/08/Agent-State-Record-Alone.png"><img class="aligncenter  wp-image-2551" src="/wp-content/uploads/2014/08/Agent-State-Record-Alone.png" alt="Agent State Record Alone" width="424" height="310" /></a></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/08/3-filled-32.png"><img class="alignleft wp-image-2601" src="http://localhost/lakshmikanth/wp-content/uploads/2014/08/3-filled-32.png" alt="3-filled-32" width="24" height="24" /></a>Log message &#8211; For reference, I logged messages into file but needed quick way to check message packet</p>
+<p>&nbsp;</p>
+<p>With simulator</p>
+<ul>
+<li>I can modify GPlus Adapter configuration and confirm results immediately saving lot of time &amp; money</li>
+<li>Allowed me to complete fail over and load testing successfully</li>
+<li>GPlus Adapter allows to configure multiple RTA streams. I configured two streams, one for simulator running locally and another one for Aspect RTA Server. It helped us to identify not only network and firewall issues &amp; also security configurations for GPlus Adapter</li>
+</ul>
+<p><strong>Note:</strong> Application size is nearly 60 MB and hence, not attached with this post. If you need this tool, feel free to contact me.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/08/07/aspect-ewfm-simulator/feed/</wfw:commentRss>
+			<slash:comments>41</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Zipper– Log Archiver tool</title>
+		<link>http://localhost/lakshmikanth/2013/11/20/zipper-log-archiver-tool/</link>
+					<comments>http://localhost/lakshmikanth/2013/11/20/zipper-log-archiver-tool/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 20 Nov 2013 16:42:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Archiver]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[Utilities]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=101</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p> </p>
+<p><strong>Zipper</strong> is log archiving utility that compresses and archives application log files. I developed it to use it to archive Genesys application logs but can be used for other application logs, as well. </p>
+<p><strong>Why we need zipper utility?</strong> </p>
+<hr>
+<p>Have you ever heard these conversations from your support team? </p>
+<p>‘We don’t have log files for this particular time frame’</p>
+<p>‘Log files rolled over. Have to wait for next occurrence’</p>
+<p>Even though, both engineer and customer know that there is an issue, they can’t do anything due to lack of log files. Also, you can compress log file to 90% of its original size i.e) you can store 9 times more than your current configuration. This led me to develop tool on my own to scan for log files on predefined intervals, compress and store it in different folder. </p>
+<p><strong>Design Considerations </p>
+<hr>
+<p></strong></p>
+<p>Initially, I designed to watch log file directory for changes to start archiving activity but decided against it as there is no need to have this application running (&#038; utilizing system resources) for log archiving. Now, zipper can be configured in windows scheduled tasks so that user can configure to schedule it as per their requirements.</p>
+<p>You can download and install Zipper from <a href="https://dl.dropboxusercontent.com/u/3031443/Software/setup.zip" target="_blank" rel="noopener noreferrer">here</a>. </p>
+<p><strong>How to configure? </p>
+<hr>
+<p></strong></p>
+<p>Zipper can be configured to scan log files in multiple directories and easily configured using any text editor. To configure, follow the steps below</p>
+<ul>
+<li>Open ‘zipper.exe.config’ from installation directory in any text editor</li>
+<li>Go to section ‘zipper’ as shown in screenshot below</li>
+</ul>
+<p><a href="http://lh3.ggpht.com/-2IdhNI3CIW0/UozmX0pb11I/AAAAAAAAAJo/7YEJ-LC7HHM/s1600-h/image%25255B32%25255D.png"><img title="image" border="0" alt="image" src="http://lh6.ggpht.com/-4BUWK0cnt7s/UozmYQQETHI/AAAAAAAAAJw/C4hswtgvjYI/image_thumb%25255B16%25255D.png?imgmax=800" width="722" height="93"></a></p>
+<table cellspacing="0" cellpadding="2" width="720" border="1">
+<tbody>
+<tr>
+<td valign="top" width="156"><a href="http://lh3.ggpht.com/-y4A4gC3h4qo/UozmZJQmr8I/AAAAAAAAAJ4/Epq03TaL4TA/s1600-h/image%25255B19%25255D.png"><img title="image" border="0" alt="image" src="http://lh3.ggpht.com/-EbXYR9_gV14/UozmZiqECDI/AAAAAAAAAKA/WcCGrVMFawo/image_thumb%25255B11%25255D.png?imgmax=800" width="30" height="30"></a></td>
+<td valign="top" width="564"><strong>name</strong> – Unique identifier for each directory</td>
+</tr>
+<tr>
+<td valign="top" width="156"><a href="http://lh4.ggpht.com/-vPyOJAdmdGk/UozmaEzX5GI/AAAAAAAAAKE/QepAwjtp7TM/s1600-h/image%25255B22%25255D.png"><img title="image" border="0" alt="image" src="http://lh3.ggpht.com/-LG6TSCPpn60/Uozmamg4cqI/AAAAAAAAAKQ/vdogegsCiGg/image_thumb%25255B12%25255D.png?imgmax=800" width="34" height="34"></a></td>
+<td valign="top" width="564"><strong>sourcedirectory</strong> – Directory path where log files will be available. Zipper application will scan this directory for files</td>
+</tr>
+<tr>
+<td valign="top" width="156"><a href="http://lh4.ggpht.com/-JfyskWD0778/Uozmbu8trCI/AAAAAAAAAKY/exySB9QA4ks/s1600-h/image%25255B25%25255D.png"><img title="image" border="0" alt="image" src="http://lh4.ggpht.com/-9bnK47b7zI4/UozmcLo3ZLI/AAAAAAAAAKg/4Pd4d85AHJA/image_thumb%25255B13%25255D.png?imgmax=800" width="34" height="35"></a></td>
+<td valign="top" width="564"><strong>targetdirectory</strong> – Directory path where log files will be compressed and stored by zipper application</td>
+</tr>
+<tr>
+<td valign="top" width="156"><a href="http://lh4.ggpht.com/-zmGUWFQVVuc/Uozmcs_FvWI/AAAAAAAAAKk/hhhHD6WhADM/s1600-h/image%25255B28%25255D.png"><img title="image" border="0" alt="image" src="http://lh6.ggpht.com/-aUQi3yLOkcc/UozmdP6FInI/AAAAAAAAAKw/4dzmhoIXb6w/image_thumb%25255B14%25255D.png?imgmax=800" width="34" height="34"></a></td>
+<td valign="top" width="564"><strong>filepattern</strong> – Used to define file extensions. For Genesys logs, use “*.log”</td>
+</tr>
+<tr>
+<td valign="top" width="156"><a href="http://lh3.ggpht.com/-pvVLld7O1XY/Uozme1aTbKI/AAAAAAAAAK4/k6Jck8JwMZU/s1600-h/image%25255B31%25255D.png"><img title="image" border="0" alt="image" src="http://lh4.ggpht.com/-w-IKGFcRYtQ/UozmfUDOjwI/AAAAAAAAALA/NaJMeFnL7VE/image_thumb%25255B15%25255D.png?imgmax=800" width="34" height="34"></a></td>
+<td valign="top" width="564"><strong>deleteoriginal</strong> – Setting this option to <strong>‘true’ </strong>will delete log file once it is compressed and archived. <strong>‘false’ </strong>will keep original file in the source directory</td>
+</tr>
+</tbody>
+</table>
+<p>I am looking to expand functionality by adding scheduling functionality within the application and will release it in next version. For any feedback, feel free to comment me and will try to add it.</p>
+<p><a href="https://dl.dropboxusercontent.com/u/3031443/Software/setup.zip" target="_blank" rel="noopener noreferrer"><strong>Download zipper.setup</strong></a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2013/11/20/zipper-log-archiver-tool/feed/</wfw:commentRss>
+			<slash:comments>9</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Tool to find default routed calls</title>
+		<link>http://localhost/lakshmikanth/2013/11/08/tool-to-find-default-routed-calls/</link>
+					<comments>http://localhost/lakshmikanth/2013/11/08/tool-to-find-default-routed-calls/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2013 10:50:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Default Routing]]></category>
+		<category><![CDATA[Platform SDK]]></category>
+		<category><![CDATA[Troubleshooting]]></category>
+		<category><![CDATA[URS]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=131</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>In our environment, I found that everyday we were having small percentage of calls getting default routed. But how do you find these calls, identify issues and provide better customer service? </p>
+<p>My search for existing tool was in vain and decided to develop it on my own (Genesys Platform SDK makes it easy to develop it too). What I want from this tool is </p>
+<ul>
+<li>To visualize call summary for each route point – Entered, Diverted, Abandoned &#038; Default Routed  </li>
+<li>See live calls for each route point – Time, Conn ID, ANI are must  </li>
+<li>Generate report for each call result – filter by route point</li>
+</ul>
+<p><a href="http://lh6.ggpht.com/-4d6NEKtkGv4/UnzB1nijV8I/AAAAAAAAAJM/XVpzSy2c9pQ/s1600-h/RPMonitor%252520Screenshot%25255B15%25255D.jpg"><img title="RPMonitor Screenshot" border="0" alt="RPMonitor Screenshot" src="http://lh6.ggpht.com/-hb1PCx2f3qg/UnzB2i0_MPI/AAAAAAAAAJU/CqnWOGcVE2U/RPMonitor%252520Screenshot_thumb%25255B13%25255D.jpg?imgmax=800" width="657" height="433"></a></p>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Identify and solve routing issues  </li>
+<li>Proactively address performance bottlenecks – Database Timeout, Web Service timeout etc..  </li>
+<li>Identify which routing points are used. Having worked with many customers, I observed many of them are not used in production environment and afraid to remove it. This will help to provide data and boost confidence to take correct action  </li>
+<li>Oh yeah, saves lot of time in troubleshooting</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2013/11/08/tool-to-find-default-routed-calls/feed/</wfw:commentRss>
+			<slash:comments>9</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>PDF Reader</title>
+		<link>http://localhost/lakshmikanth/2013/06/12/pdf-reader/</link>
+					<comments>http://localhost/lakshmikanth/2013/06/12/pdf-reader/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 12 Jun 2013 16:19:00 +0000</pubDate>
+				<category><![CDATA[Tools]]></category>
+		<category><![CDATA[Utilities]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=201</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p> </p>
+<p>I always wanted to develop my own PDF reader so that I can organize all product manuals inside application, which will make it easy to browse/search with titles.</p>
+<p>Well, I took first step towards this and developed PDF reader application, as below</p>
+<p><a href="http://lh3.ggpht.com/-DxctlnVKRAI/Ubife9KvstI/AAAAAAAAAD0/IY9VAeO2KRI/s1600-h/SNAGHTML7e2bd2%25255B4%25255D.png"><img title="SNAGHTML7e2bd2" border="0" alt="SNAGHTML7e2bd2" src="http://lh6.ggpht.com/-vqf6yD5lb3I/UbifgG-R_fI/AAAAAAAAAD4/EyxhNChdhPk/SNAGHTML7e2bd2_thumb%25255B1%25255D.png?imgmax=800" width="720" height="523"></a></p>
+<p>I used open API’s to develop this with aim to develop web application like Google documents to read PDF files. I believe, it is good idea to store product documents in intranet and provide web access to it</p>
+<p>In the coming weeks, I am planning to add functionality to organize documents. add search functionality and make it available as free download <img alt="Smile" src="http://lh6.ggpht.com/-3GBmdJhZ43k/UbifgjFXzQI/AAAAAAAAAEA/ALxkMsBpxyE/wlEmoticon-smile%25255B2%25255D.png?imgmax=800"></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2013/06/12/pdf-reader/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

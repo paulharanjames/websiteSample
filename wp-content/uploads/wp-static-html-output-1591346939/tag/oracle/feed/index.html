@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Oracle &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/oracle/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Tue, 23 Jun 2015 09:50:46 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Handling the leap second</title>
+		<link>http://localhost/lakshmikanth/2015/06/23/handling-the-leap-second/</link>
+					<comments>http://localhost/lakshmikanth/2015/06/23/handling-the-leap-second/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 23 Jun 2015 09:50:46 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[Tips]]></category>
+		<category><![CDATA[Leap Second]]></category>
+		<category><![CDATA[Oracle]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=5581</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<h3>Leap Second &#8211; What is it?</h3>
+<hr />
+<p>From wiki</p>
+<blockquote><p><em>A <b>leap second</b> is a one-<a title="Second" href="https://en.wikipedia.org/wiki/Second">second</a> adjustment that is occasionally applied to <a title="Coordinated Universal Time" href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time">Coordinated Universal Time</a> (UTC) in order to keep its time of day close to the <a class="mw-redirect" title="Mean solar time" href="https://en.wikipedia.org/wiki/Mean_solar_time">mean solar time</a>, or <a class="mw-redirect" title="UT1" href="https://en.wikipedia.org/wiki/UT1">UT1</a>. Without such a correction, time reckoned by <a title="Earth's rotation" href="https://en.wikipedia.org/wiki/Earth%27s_rotation">Earth&#8217;s rotation</a> drifts away from <a class="mw-redirect" title="Atomic time" href="https://en.wikipedia.org/wiki/Atomic_time">atomic time</a> because of <a class="mw-redirect" title="Earth rotation" href="https://en.wikipedia.org/wiki/Earth_rotation#Changes_in_rotation">irregularities</a> in the Earth&#8217;s rate of rotation. </em></p></blockquote>
+<figure id="attachment_5621" aria-describedby="caption-attachment-5621" style="width: 391px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2015/06/2015-06-23_10-22-36.png"><img class="size-full wp-image-5621" src="http://localhost/lakshmikanth/wp-content/uploads/2015/06/2015-06-23_10-22-36.png" alt="Leap Time" width="391" height="161" srcset="http://localhost/lakshmikanth/wp-content/uploads/2015/06/2015-06-23_10-22-36.png 391w, http://localhost/lakshmikanth/wp-content/uploads/2015/06/2015-06-23_10-22-36-300x124.png 300w" sizes="(max-width: 391px) 100vw, 391px" /></a><figcaption id="caption-attachment-5621" class="wp-caption-text">Leap Time Jun 30 2015</figcaption></figure>
+<p>We will have leap second on Jun 30th this year and it means that this year the last minute of June 30th will be one second longer and “June 30, 2015 23:59:60″ will be a valid and correct time. There may be few issues caused by leap second and below is the summary of my findings</p>
+<h3>Genesys</h3>
+<hr />
+<p>There will be minor issues on reporting products and can be fixed by adjusting time through NTP. I suggest to synchronize time on server on 01 July 2015 01:00 hours on all Genesys Servers.</p>
+<h3>Operating System (Windows, IBM AIX and Redhat LInux)</h3>
+<hr />
+<p>Microsoft (<a href="http://blogs.msdn.com/b/mthree/archive/2012/07/01/leap-second-070112.aspx">http://blogs.msdn.com/b/mthree/archive/2012/07/01/leap-second-070112.aspx</a>) and IBM (<a href="http://www-01.ibm.com/support/docview.wss?uid=isg3T1022057">http://www-01.ibm.com/support/docview.wss?uid=isg3T1022057</a>) confirmed that there will not be any issues.</p>
+<p>Red hat linux is impacted by leap second and fix is available for this. More details can be found at <a href="https://access.redhat.com/articles/15145">https://access.redhat.com/articles/15145</a></p>
+<h3>Databases (Oracle and SQL Server)</h3>
+<hr />
+<ul>
+<li>SQL Server &#8211; No impact as it receives time from Windows</li>
+<li>Oracle &#8211; Oracle notes that there may be multiple issues (System Hang, 100% CPU utilization etc) on LInux environment (<a href="https://blogs.oracle.com/oem/entry/oracle_support_note_for_leap">https://blogs.oracle.com/oem/entry/oracle_support_note_for_leap</a>). Refer to the above link for MOS note to fix this issue in your environment</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/06/23/handling-the-leap-second/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

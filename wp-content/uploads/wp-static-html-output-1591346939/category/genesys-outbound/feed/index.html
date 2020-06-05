@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Genesys outbound &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/genesys-outbound/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Wed, 01 Jun 2011 15:55:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Outbound : Convert seconds to UTC Time and vice versa</title>
+		<link>http://localhost/lakshmikanth/2011/06/01/outbound-convert-seconds-to-utc-time-and-vice-versa/</link>
+					<comments>http://localhost/lakshmikanth/2011/06/01/outbound-convert-seconds-to-utc-time-and-vice-versa/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Wed, 01 Jun 2011 15:55:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Genesys outbound]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[VB.NET]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=391</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				To convert date from export file to seconds passed after 01/01/1970 in Genesys format)</p>
+<p><span><em>       Dim sDate As String = &#8220;01/06/2011 16:46:44&#8221;</em></span><br /><span><em>       Dim date1 As Date = #1/1/1970#</em></span></p>
+<p><span><em>       Dim date2 As Date = DateTime.Parse(sDate).ToUniversalTime</em></span></p>
+<p><span><em>       inSeconds = DateDiff(&#8220;s&#8221;, date1, date2))</em></span></p>
+<p><span>To convert seconds from database to date and time</span></p>
+<p><span>        Dim localTime As Date</span></p>
+<p><span>        Dim date1 As Date = #1/1/1970#</span></p>
+<p><span>        localTime = date1.AddSeconds(1306943204).ToLocalTime</span></p>
+<p><span>        Debug.Print localtime.ToString</span>		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2011/06/01/outbound-convert-seconds-to-utc-time-and-vice-versa/feed/</wfw:commentRss>
+			<slash:comments>7</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Agent Callback Error: Agent moved to another campaign</title>
+		<link>http://localhost/lakshmikanth/2009/10/26/agent-callback-error-agent-moved-to-another-campaign/</link>
+					<comments>http://localhost/lakshmikanth/2009/10/26/agent-callback-error-agent-moved-to-another-campaign/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Mon, 26 Oct 2009 21:16:00 +0000</pubDate>
+				<category><![CDATA[Callback]]></category>
+		<category><![CDATA[Dialer (OCS)]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[Genesys outbound]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[OCS]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=571</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>What happens if the agent has personal callback in Campaign A and moved to campaign B…? Interesting question from the customer..</p>
+<p>Tested and found that OCS fails with Agent Callback error in this scenario <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f641.png" alt="🙁" class="wp-smiley" style="height: 1em; max-height: 1em;" /> What can we do now?</p>
+<p>Fortunately, got workaround solution using treatments..</p>
+<ul>
+<li>Configured treatment for Agent Callback error and assigned to Group</li>
+</ul>
+<p>My customer is happy with this work around solution..if you have any other solution, let us know..</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2009/10/26/agent-callback-error-agent-moved-to-another-campaign/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Predictive outbound in Genesys(Avaya pbx)</title>
+		<link>http://localhost/lakshmikanth/2008/10/31/predictive-outbound-in-genesysavaya-pbx/</link>
+					<comments>http://localhost/lakshmikanth/2008/10/31/predictive-outbound-in-genesysavaya-pbx/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Fri, 31 Oct 2008 12:31:00 +0000</pubDate>
+				<category><![CDATA[Avaya]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[genesys avaya outbound]]></category>
+		<category><![CDATA[Genesys outbound]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[OCM]]></category>
+		<category><![CDATA[Predictive dialing]]></category>
+		<category><![CDATA[VDN]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=971</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				<span><strong>Intended Audience:</strong></span> If you want to configure outbound in predictive mode in Genesys CTI and Avaya pbx.</p>
+<p><span><strong>Prerequisites</strong></span>: Genesys framework and Outbound solution (OCS and OCM)</p>
+<p>Before beginning the work, ensure that your Avaya pbx has Call classifier card configured with enough number of call classifier ports.</p>
+<p>Predictive dialing needs Vector Destination Numbers (VDNs) to be configured both in the switch and Genesys CME.</p>
+<p>You can verify with Avaya personnel to create a VDN on the switch.Make a note of the VDN created. Now create and configure the same VDN on CME. VDN in CME is  a DN of type <strong>route point</strong> with <strong>switch-specific type</strong> as <strong>2</strong>. Done ? now you can consider as half way through!</p>
+<p>Make sure from the Avaya personnel that the VDN has Class of Restriction (COR) configured to allow outbound dialing. You can test the same by making a call from that VDN manually.</p>
+<p>Now we will go to the routing part. In IRD, create a simple strategy to route the calls to an agent group. Load the strategy on to the VDN.</p>
+<p>Now create a calling list with outbound numbers. Logon your agents. Start your OCM and run the campaign. In IRD&#8217;s monitoring view of the strategy,[polldaddy poll=1061554] see if the calls are routed.</p>
+<p>Can you see the call in agent desktop?. Cheers! <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>NO ? Post your error code in this blog and Lakshmi is there to help you :))		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2008/10/31/predictive-outbound-in-genesysavaya-pbx/feed/</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

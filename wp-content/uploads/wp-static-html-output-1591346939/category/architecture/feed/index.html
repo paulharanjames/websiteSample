@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Architecture &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/architecture/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 05 Mar 2015 11:52:01 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Design Patterns &#8211; External Configuration Store Pattern</title>
+		<link>http://localhost/lakshmikanth/2015/03/05/design-patterns-external-configuration-store-pattern/</link>
+					<comments>http://localhost/lakshmikanth/2015/03/05/design-patterns-external-configuration-store-pattern/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 05 Mar 2015 11:52:01 +0000</pubDate>
+				<category><![CDATA[Architecture]]></category>
+		<category><![CDATA[Design Patterns]]></category>
+		<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[External Configuration Store]]></category>
+		<guid isPermaLink="false">http://www.lakshmikanth.com/?p=5271</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				In my previous post, I discussed about <a title="Design Patterns – Runtime Reconfiguration Pattern" href="http://www.lakshmikanth.com/design-patterns-runtime-reconfiguration-pattern/">&#8216;Runtime Reconfiguration Pattern&#8217; </a> and how it can be applied in Genesys environment.It is easy to implement &#8216;Runtime Reconfiguration Pattern&#8217; in Genesys and realize benefits for server applications. For client applications,  I recommend to use &#8216;External Configuration Store&#8217; pattern along with &#8216;Runtime Reconfiguration&#8217; to improve availability and scalability.</p>
+<h3>Problem</h3>
+<hr />
+<h3></h3>
+<p>The majority of application runtime environments include configuration information that is held in files deployed with the application, located within the application folders. In some cases it is possible to edit these files to change the behavior of the application after it has been deployed. However, in many cases, changes to the configuration require the application to be redeployed, resulting in unacceptable downtime and additional administrative overhead. For example, if you want to change log folder location for Softphone and you need to make changes in all agent desktops.</p>
+<p>Local configuration files also limit the configuration to a single application, whereas in some scenarios it would be useful to share configuration settings across multiple applications. Examples include database connection strings, Phone book, Transfer directory etc and storage used by a related set of applications.</p>
+<p>In addition, updates to applications and components may require changes to configuration schemas.</p>
+<h3>Solution</h3>
+<hr />
+<p>Most of the problems can be addressed by using Configuration Server to store information. On large contact centers with 2K+ agents,  it overloads configuration server and any load on core servers should be avoided.</p>
+<h3>Solution #1 : Use Configuration Server Proxy</h3>
+<hr />
+<p>Straightforward solution. Install Configuration Server Proxy and direct client application traffic to proxy</p>
+<h3>Solution #2 : Use custom application</h3>
+<hr />
+<p>Use custom application to store and provide configuration data as below</p>
+<figure id="attachment_5281" aria-describedby="caption-attachment-5281" style="width: 787px" class="wp-caption aligncenter"><a href="http://localhost/lakshmikanth/wp-content/uploads/2015/03/External-Configuration-Store.png"><img class="wp-image-5281 size-full" src="http://localhost/lakshmikanth/wp-content/uploads/2015/03/External-Configuration-Store.png" alt="External Configuration Store" width="787" height="328" srcset="http://localhost/lakshmikanth/wp-content/uploads/2015/03/External-Configuration-Store.png 787w, http://localhost/lakshmikanth/wp-content/uploads/2015/03/External-Configuration-Store-300x125.png 300w, http://localhost/lakshmikanth/wp-content/uploads/2015/03/External-Configuration-Store-768x320.png 768w" sizes="(max-width: 787px) 100vw, 787px" /></a><figcaption id="caption-attachment-5281" class="wp-caption-text">External Configuration Store Pattern</figcaption></figure>
+<p>&nbsp;</p>
+<p>My personal preference is to use custom application to store configuration data for the following reasons</p>
+<ul>
+<li>Flexibility to store different types of data like collections, XML document etc. Particularly useful, if you want to store phone book, personal speed dials etc.</li>
+<li>Easy to store multiple versions of configuration settings. For example, user may want to use different set of transfer directory numbers for holiday period only</li>
+<li>Implement business rules &#8211; Depending on user, machine, site or IP address range allows you to present different configuration settings</li>
+<li>Can be used as load balancing solution. In many cases &#8211; almost in all scenarios, client applications are configured to use dedicated instance of server applications like CS Proxy or Stat Server. For example, when agent logs in,  custom application can provide CS proxy details from pool instead of dedicated instance, which increases availability and performance</li>
+</ul>
+<p>In my next post, I will cover another interesting pattern &#8216;Cache Aside&#8217; to improve application performance.		</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2015/03/05/design-patterns-external-configuration-store-pattern/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Sockets &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/category/sockets/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 03 Jun 2010 15:35:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>How to detect socket disconnection in .NET?</title>
+		<link>http://localhost/lakshmikanth/2010/06/03/how-to-detect-socket-disconnection-in-net/</link>
+					<comments>http://localhost/lakshmikanth/2010/06/03/how-to-detect-socket-disconnection-in-net/#respond</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Thu, 03 Jun 2010 15:35:00 +0000</pubDate>
+				<category><![CDATA[How to]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[Sockets]]></category>
+		<category><![CDATA[VB.NET]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=521</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>After spending few days, finally able to figure socket disconnect detection in .NET <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> </p>
+<p> </p>
+<p>Public Shared Function IsConnected(ByVal socket As Socket) As Boolean     <br />        Try      <br />            Return Not (socket.Poll(1, SelectMode.SelectRead) AndAlso socket.Available = 0)      <br />        Catch generatedExceptionName As SocketException      <br />            Return False      <br />        End Try      <br />End Function</p>
+<p>In Timer_tick event, keep checking for connection status.  If return value is ‘false’, we can say that socket is disconnected now <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2010/06/03/how-to-detect-socket-disconnection-in-net/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

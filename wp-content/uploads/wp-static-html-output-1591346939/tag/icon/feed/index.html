@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ICON &#8211; Lakshmikanth</title>
+	<atom:link href="http://localhost/lakshmikanth/tag/icon/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/lakshmikanth/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Tue, 12 Aug 2014 14:43:00 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<item>
+		<title>Genesys Infomart Reporting &#8211; Get ConnID from GIM database</title>
+		<link>http://localhost/lakshmikanth/2014/08/12/how-to-get-connid-from-infomart-database/</link>
+					<comments>http://localhost/lakshmikanth/2014/08/12/how-to-get-connid-from-infomart-database/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 12 Aug 2014 14:43:00 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[How to]]></category>
+		<category><![CDATA[GIM]]></category>
+		<category><![CDATA[ICON]]></category>
+		<category><![CDATA[Infomart]]></category>
+		<guid isPermaLink="false">http://lakshmikanth.azurewebsites.net/?p=2641</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p>				Recently, I answered question about <a href="http://www.sggu.com/smf/index.php/topic,8465.0.html" target="_blank" rel="noopener noreferrer">&#8216;Conn Id in Infomart?&#8217;</a> in SGGU(www.sggu.com) forum and referred to the link &#8216;<span style="text-decoration: underline;"><a title="Genesys Reporting – Get ConnID from Infomart database" href="http://www.lakshmikanth.com/how-to-get-connid-from-infomart-database/">Link ConnId In Infomart&#8217;.</a> </span> However, requester want to retrieve Conn ID directly from Genesys Infomart. As Conn Id field is stored in decimal format in Infomart database (GIM), it was not useful as T-Server log uses hexadecimal format.</p>
+<p>In C#, you can simply call Int64.ToString(&#8220;X&#8221;) to convert integer into hexadecimal format but there were no inbuilt functions within SQL Server. I wrote SQL Server function to convert decimal to hex as below..</p>
+<pre class="font:consolas font-size-enable:false toolbar-overlay:false show-lang:1 whitespace-before:1 whitespace-after:1 lang:tsql decode:true " title="ConvertToHex">CREATE FUNCTION ConvertToBase
+(
+    @value AS BIGINT
+) RETURNS VARCHAR(MAX) 
+AS 
+BEGIN
+    -- some variables
+    DECLARE @characters CHAR(36),
+            @result VARCHAR(MAX),
+        @base int;
+ 
+    -- the encoding string 
+    SELECT @characters = '0123456789abcdefghijklmnopqrstuvwxyz',
+           @result = '',
+           @base = 16;
+ 
+    -- Convert it into hex
+    WHILE @value &gt; 0
+        SELECT @result = SUBSTRING(@characters, @value % @base + 1, 1) + @result,
+               @value = @value / @base;
+ 
+    -- Prefix 0 
+    set @result = N'0'+ @result;
+    
+    -- return our results
+    RETURN @result;
+ 
+END</pre>
+<p>Above function is Patrick Caldwell blog post about <a href="http://dpatrickcaldwell.blogspot.co.uk/2009/05/converting-decimal-to-hexadecimal-with.html" target="_blank" rel="noopener noreferrer">converting decimals to base numbers</a> and big thanks to him.</p>
+<p><strong>Update 13-Aug-2014:</strong></p>
+<p>SQL query to get Conn ID from Infomart database is as below</p>
+<pre class="font:consolas toolbar:1 toolbar-overlay:false whitespace-before:1 whitespace-after:1 lang:tsql decode:true  " title="Get ConnID">select top 1
+	interaction_id,
+	dbo.converttobase(media_server_ixn_id)
+from
+	interaction_segment_fact
+order by
+	interaction_id desc</pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/08/12/how-to-get-connid-from-infomart-database/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Link ‘ConnID’ with Interaction Id in Infomart</title>
+		<link>http://localhost/lakshmikanth/2014/04/29/link-connid-with-interaction-id-in-infomart/</link>
+					<comments>http://localhost/lakshmikanth/2014/04/29/link-connid-with-interaction-id-in-infomart/#comments</comments>
+		
+		<dc:creator><![CDATA[lakshmikanth]]></dc:creator>
+		<pubDate>Tue, 29 Apr 2014 14:25:04 +0000</pubDate>
+				<category><![CDATA[Genesys]]></category>
+		<category><![CDATA[ICON]]></category>
+		<category><![CDATA[Infomart]]></category>
+		<category><![CDATA[Tips]]></category>
+		<guid isPermaLink="false">https://lakshmikanth.azurewebsites.net/?p=1781</guid>
+
+					<description><![CDATA[
+						]]></description>
+										<content:encoded><![CDATA[<p><font size="3" face="Calibri">In Genesys environment, most of us are still used to track call information using Connection Id (ConnID). However, Genesys Infomart (GIM), core subject areas are linked with interaction id and this post will help you to get interaction id using connid or vice versa.</font></p>
+<h3>To get interaction id using conn id</h3>
+<ul>
+<li><font size="3" face="Calibri">Login into Genesys Icon database and query ‘g_call’ table using your conn id as below. </font></li>
+</ul>
+<p><font color="#008000" face="Calibri">select&nbsp; id, callid, connid, irid, rootirid from g_call where connid = <strong><em>&lt; your conn id here&gt;</em></strong></font></p>
+<p><font face="Calibri">From the results, take note of rootirid. A call can have multiple conn id due to transfers and column ‘rootirid’ links call records like below</font></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/04/clip_image0012.jpg"><img title="clip_image001" style="display: inline" alt="clip_image001" src="http://localhost/lakshmikanth/wp-content/uploads/2014/04/clip_image001_thumb2.jpg" width="769" height="257"></a></p>
+<ul>
+<li><font face="Calibri">Now, login into Genesys Infomart database and query ‘interaction_fact’ using query below</font></li>
+</ul>
+<p><font color="#008000" face="Calibri">select * from interaction_fact where media_server_ixn_guid = <strong><em>&lt;your root irid here&gt;</em></strong></font></p>
+<p><a href="http://localhost/lakshmikanth/wp-content/uploads/2014/04/image.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://localhost/lakshmikanth/wp-content/uploads/2014/04/image_thumb.png" width="701" height="316"></a><font face="Calibri"></font></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>http://localhost/lakshmikanth/2014/04/29/link-connid-with-interaction-id-in-infomart/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
